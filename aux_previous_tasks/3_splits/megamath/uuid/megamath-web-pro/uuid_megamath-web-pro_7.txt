@@ -1,0 +1,10 @@
+/data/megamath-0.0.0/uuid/megamath-web-pro/000_00070.jsonl.zst
+/data/megamath-0.0.0/uuid/megamath-web-pro/000_00071.jsonl.zst
+/data/megamath-0.0.0/uuid/megamath-web-pro/000_00072.jsonl.zst
+/data/megamath-0.0.0/uuid/megamath-web-pro/000_00073.jsonl.zst
+/data/megamath-0.0.0/uuid/megamath-web-pro/000_00074.jsonl.zst
+/data/megamath-0.0.0/uuid/megamath-web-pro/000_00075.jsonl.zst
+/data/megamath-0.0.0/uuid/megamath-web-pro/000_00076.jsonl.zst
+/data/megamath-0.0.0/uuid/megamath-web-pro/000_00077.jsonl.zst
+/data/megamath-0.0.0/uuid/megamath-web-pro/000_00078.jsonl.zst
+/data/megamath-0.0.0/uuid/megamath-web-pro/000_00079.jsonl.zst

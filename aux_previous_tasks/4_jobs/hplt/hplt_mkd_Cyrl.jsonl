@@ -1,0 +1,3 @@
+{"dataset_name":"hplt/mkd_Cyrl","name":"hplt_3.0_sorted_mkd_Cyrl_0","status":"COMPLETED","path":"3_splits/hplt/3.0/sorted/mkd_Cyrl/3.0_sorted_mkd_Cyrl_0.txt","job_id":"15797761_1","task_benchmark_ngrams":"1_task_ngrams/macedonian_benchmarks.pkl"}
+{"dataset_name":"hplt/mkd_Cyrl","name":"hplt_3.0_sorted_mkd_Cyrl_1","status":"COMPLETED","path":"3_splits/hplt/3.0/sorted/mkd_Cyrl/3.0_sorted_mkd_Cyrl_1.txt","job_id":"15797761_2","task_benchmark_ngrams":"1_task_ngrams/macedonian_benchmarks.pkl"}
+{"dataset_name":"hplt/mkd_Cyrl","name":"hplt_3.0_sorted_mkd_Cyrl_2","status":"COMPLETED","path":"3_splits/hplt/3.0/sorted/mkd_Cyrl/3.0_sorted_mkd_Cyrl_2.txt","job_id":"15797761_3","task_benchmark_ngrams":"1_task_ngrams/macedonian_benchmarks.pkl"}

@@ -1,0 +1,60 @@
+tasks:
+
+  - name: benchmarks.code.multilingual_benchmarks.MultiBlimp
+    params: {lang: es, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.Belebele
+    params: {lang: es, split_type: test}
+
+  - name: benchmarks.code.spanishbench_benchmarks.SpanishBench_Cocoteros
+    params: {split_type: test}
+    
+  - name: benchmarks.code.spanishbench_benchmarks.SpanishBench_COPA
+    params: {split_type: test}
+
+  - name: benchmarks.code.spanishbench_benchmarks.SpanishBench_ESCOLA
+    params: {split_type: validation}
+
+  - name: benchmarks.code.multilingual_benchmarks.MGSM
+    params: {lang: es, split_type: test}
+
+  - name: benchmarks.code.spanishbench_benchmarks.SpanishBench_OpenBookQA
+    params: {split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.PAWS_x
+    params: {lang: es, split_type: test}
+
+  - name: benchmarks.code.spanishbench_benchmarks.SpanishBench_WNLI
+    params: {split_type: validation}
+
+  - name: benchmarks.code.spanishbench_benchmarks.SpanishBench_XLSUM
+    params: {split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.XNLI
+    params: {lang: es, split_type: validation}
+
+  - name: benchmarks.code.spanishbench_benchmarks.SpanishBench_Phrases
+    params: {split_type: test}
+  
+  - name: benchmarks.code.multilingual_benchmarks.Flores200
+    params: {split_type: devtest, lang: es}
+    
+  - name: benchmarks.code.multilingual_benchmarks.XStoryCloze
+    params: {split_type: eval, lang: es}
+
+  - name: benchmarks.code.multilingual_benchmarks.MTBench_X
+    params: {lang: es, file_dir: "benchmarks/data/mt_bench_X"}
+
+  - name: benchmarks.code.spanishbench_benchmarks.SpanishBench_XQUAD
+    params: {split_type: validation}
+
+  - name: benchmarks.code.multilingual_benchmarks.Multi_IFEval
+    params: {lang: es, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalMMLU_Full
+    params: {lang: es, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.MMMLU
+    params: {lang: es, split_type: test}
+  
+  

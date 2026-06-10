@@ -1,0 +1,4 @@
+/data/olmo-mix-1124/source/pes2o/pes2o-0020.json.gz
+/data/olmo-mix-1124/source/pes2o/pes2o-0021.json.gz
+/data/olmo-mix-1124/source/pes2o/pes2o-0022.json.gz
+/data/olmo-mix-1124/source/pes2o/pes2o-0023.json.gz

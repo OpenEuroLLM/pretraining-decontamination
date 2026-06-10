@@ -1,0 +1,46 @@
+tasks:
+
+  - name: benchmarks.code.multilingual_benchmarks.MultiBlimp
+    params: {lang: fr, split_type: train}
+    
+  - name: benchmarks.code.multilingual_benchmarks.Belebele
+    params: {lang: fr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Include
+    params: {lang: fr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Flores200
+    params: {lang: fr, split_type: devtest}
+
+  - name: benchmarks.code.multilingual_benchmarks.m_ArenaHard
+    params: {lang: fr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.PolyMath
+    params: {lang: fr}
+
+  - name: benchmarks.code.multilingual_benchmarks.XWinograd
+    params: {lang: fr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.XWinogradNoBlanks
+    params: {lang: fr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.MGSM
+    params: {lang: fr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.MMMLU
+    params: {lang: fr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.MTBench_X
+    params: {lang: fr, file_dir: "benchmarks/data/mt_bench_X"}
+
+  - name: benchmarks.code.multilingual_benchmarks.XNLI
+    params: {lang: fr, split_type: validation}
+
+  - name: benchmarks.code.multilingual_benchmarks.PAWS_x
+    params: {lang: fr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Multi_IFEval
+    params: {lang: fr, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalMMLU_Full
+    params: {lang: fr, split_type: test}

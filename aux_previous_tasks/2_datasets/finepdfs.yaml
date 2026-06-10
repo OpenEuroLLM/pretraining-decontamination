@@ -1,0 +1,5 @@
+finepdfs-1.0.0:
+  dataset_path: finepdfs-1.0.0
+  chunk_size: 4
+  directories:
+    - "source/{lang}"

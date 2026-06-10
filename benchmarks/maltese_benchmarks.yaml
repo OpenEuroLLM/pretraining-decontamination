@@ -1,0 +1,11 @@
+tasks:
+    
+  - name: benchmarks.code.multilingual_benchmarks.Belebele
+    params: {lang: mt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Flores200
+    params: {lang: mt, split_type: devtest}
+
+
+
+

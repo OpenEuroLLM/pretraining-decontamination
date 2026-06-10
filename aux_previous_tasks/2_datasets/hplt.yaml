@@ -1,0 +1,6 @@
+
+hplt:
+  dataset_path: hplt
+  chunk_size: 2
+  directories:
+    - "3.0/sorted/{lang}"

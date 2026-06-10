@@ -1,0 +1,1 @@
+{"dataset_name": "finepdfs-1.0.0/isl_Latn", "name": "collection_flag_finepdfs-1.0.0_source_isl_Latn_0", "status": "NOT_STARTED", "path": "3_splits/finepdfs-1.0.0/source/isl_Latn/source_isl_Latn_0.txt", "job_id": null, "task_benchmark_ngrams": "1_task_ngrams/icelandic_benchmarks.pkl", "metadata_path": "/data/collection/flag/finepdfs-1.0.0/metadata.yaml"}

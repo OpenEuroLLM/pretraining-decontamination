@@ -1,0 +1,1 @@
+{"dataset_name": "finepdfs-1.0.0/als_Latn", "name": "collection_flag_finepdfs-1.0.0_source_als_Latn_0", "status": "NOT_STARTED", "path": "3_splits/finepdfs-1.0.0/source/als_Latn/source_als_Latn_0.txt", "job_id": null, "task_benchmark_ngrams": "1_task_ngrams/albanian_benchmarks.pkl", "metadata_path": "/data/collection/flag/finepdfs-1.0.0/metadata.yaml"}

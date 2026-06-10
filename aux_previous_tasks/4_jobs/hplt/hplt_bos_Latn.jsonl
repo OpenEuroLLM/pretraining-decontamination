@@ -1,0 +1,3 @@
+{"dataset_name":"hplt/bos_Latn","name":"hplt_3.0_sorted_bos_Latn_0","status":"COMPLETED","path":"3_splits/hplt/3.0/sorted/bos_Latn/3.0_sorted_bos_Latn_0.txt","job_id":"15797744_1","task_benchmark_ngrams":"1_task_ngrams/bosnian_benchmarks.pkl"}
+{"dataset_name":"hplt/bos_Latn","name":"hplt_3.0_sorted_bos_Latn_1","status":"COMPLETED","path":"3_splits/hplt/3.0/sorted/bos_Latn/3.0_sorted_bos_Latn_1.txt","job_id":"15797744_2","task_benchmark_ngrams":"1_task_ngrams/bosnian_benchmarks.pkl"}
+{"dataset_name":"hplt/bos_Latn","name":"hplt_3.0_sorted_bos_Latn_2","status":"COMPLETED","path":"3_splits/hplt/3.0/sorted/bos_Latn/3.0_sorted_bos_Latn_2.txt","job_id":"15797744_3","task_benchmark_ngrams":"1_task_ngrams/bosnian_benchmarks.pkl"}

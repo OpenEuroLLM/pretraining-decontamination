@@ -1,0 +1,5 @@
+/data/collection/flag/finepdfs-1.0.0/source/por_Latn/000_00020.jsonl.zst
+/data/collection/flag/finepdfs-1.0.0/source/por_Latn/000_00021.jsonl.zst
+/data/collection/flag/finepdfs-1.0.0/source/por_Latn/000_00022.jsonl.zst
+/data/collection/flag/finepdfs-1.0.0/source/por_Latn/000_00023.jsonl.zst
+/data/collection/flag/finepdfs-1.0.0/source/por_Latn/000_00024.jsonl.zst

@@ -1,0 +1,18 @@
+tasks:
+  - name: benchmarks.code.multilingual_benchmarks.Belebele
+    params: {lang: uk, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalMMLU_Full
+    params: {lang: uk, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Include
+    params: {lang: uk, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Flores200
+    params: {lang: uk, split_type: devtest}
+
+  - name: benchmarks.code.multilingual_benchmarks.m_ArenaHard
+    params: {lang: uk, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.MultiBlimp
+    params: {lang: uk, split_type: train}

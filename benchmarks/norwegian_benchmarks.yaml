@@ -1,0 +1,10 @@
+tasks:
+# Please do not remove the following Norwegian benchmarks 
+  - name: benchmarks.code.multilingual_benchmarks.Belebele
+    params: {lang: nob, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Flores200
+    params: {lang: nno, split_type: devtest}
+
+  - name: benchmarks.code.multilingual_benchmarks.Flores200
+    params: {lang: nob, split_type: devtest}

@@ -1,0 +1,2 @@
+/data/hplt/3.0/sorted/spa_Latn/8_17.jsonl.zst
+/data/hplt/3.0/sorted/spa_Latn/8_18.jsonl.zst

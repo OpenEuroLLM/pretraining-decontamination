@@ -1,0 +1,6 @@
+/data/finepdfs/1.0.0/edu/ita_Latn/train/000_00018.jsonl.zst
+/data/finepdfs/1.0.0/edu/ita_Latn/train/000_00019.jsonl.zst
+/data/finepdfs/1.0.0/edu/ita_Latn/train/000_00020.jsonl.zst
+/data/finepdfs/1.0.0/edu/ita_Latn/train/000_00021.jsonl.zst
+/data/finepdfs/1.0.0/edu/ita_Latn/train/000_00022.jsonl.zst
+/data/finepdfs/1.0.0/edu/ita_Latn/train/000_00023.jsonl.zst

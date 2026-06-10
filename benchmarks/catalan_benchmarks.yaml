@@ -1,0 +1,73 @@
+tasks:
+
+  - name: benchmarks.code.multilingual_benchmarks.MultiBlimp
+    params: {lang: ca, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.Belebele
+    params: {lang: ca, split_type: test}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_ArcChallenge
+    params: {split_type: test}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_ArcEasy
+    params: {split_type: test}
+    
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_Cabreu
+    params: {split_type: test}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_CatalanQA
+    params: {split_type: test}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_Catcola
+    params: {split_type: validation}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_Cocoteros
+    params: {split_type: test}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_COPA
+    params: {split_type: test}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_CoqCat
+    params: {split_type: test}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_MGSM
+    params: {split_type: test}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_OpenBookQA
+    params: {split_type: test}
+  
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_Parafraseja
+    params: {split_type: test}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_PAWS
+    params: {split_type: test}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_PIQA
+    params: {split_type: validation}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_SIQA
+    params: {split_type: validation}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_TECA
+    params: {split_type: test}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_WNLI
+    params: {split_type: validation}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_XNLI
+    params: {split_type: validation}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_XNLIVA
+    params: {split_type: test}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_XQUAD
+    params: {split_type: test}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_XStoryCloze
+    params: {split_type: eval}
+
+  - name: benchmarks.code.catalan_benchmarks.CatalanBench_PhrasesCAVA
+    params: {split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Flores200
+    params: {split_type: devtest, lang: ca}

@@ -1,0 +1,225 @@
+langs_script:
+ eng: Latn
+ bul: Cyrl
+ hrv: Latn
+ ces: Latn
+ dan: Latn
+ nld: Latn
+ est: Latn
+ fin: Latn
+ fra: Latn
+ deu: Latn
+ ell: Grek
+ hun: Latn
+ ita: Latn
+ lit: Latn
+ mlt: Latn
+ pol: Latn
+ por: Latn
+ ron: Latn
+ slk: Latn
+ slv: Latn
+ spa: Latn
+ swe: Latn
+ eus: Latn
+ cat: Latn
+ lvs: Latn
+ glg: Latn
+ gle: Latn
+ bos: Latn
+ kat: Geor
+ mkd: Cyrl
+ sqi: Latn
+ als: Latn
+ srp: Cyrl
+ hbs: Cyrl
+ tur: Latn
+ ukr: Cyrl
+ isl: Latn
+ nor: Latn
+ nno: Latn
+ nob: Latn
+
+langs_mmmlu:
+  fr: FR_FR
+  de: DE_DE
+  it: IT_IT
+  pt: PT_BR
+  es: ES_LA
+
+langs_global_mmlu:
+  - cs
+  - nl
+  - fr
+  - de
+  - el
+  - it
+  - lt
+  - pl
+  - pt
+  - ro
+  - es
+  - sv
+  - sr
+  - tr
+  - uk
+
+langs_include:
+  - bg
+  - hr
+  - nl
+  - et
+  - fi
+  - fr
+  - de
+  - el
+  - hu
+  - it
+  - lt
+  - pl
+  - pt
+  - es
+  - eu
+  - sq
+  - sr
+  - tr
+  - uk
+
+langs_xcopa: 
+  - et
+  - it
+  - tr
+
+langs_polymath: 
+  - en 
+  - fr 
+  - de 
+  - it 
+  - pt 
+  - es
+
+langs_xwinograd: 
+  - fr
+  - pt
+  - en
+
+langs_mgsm:  
+  - fr
+  - de
+  - es
+
+langs_belebele:
+  - en
+  - bg
+  - hr
+  - cs
+  - da
+  - nl
+  - et
+  - fi
+  - fr
+  - de
+  - el
+  - hu
+  - it
+  - lt
+  - mt
+  - pl
+  - pt
+  - ro
+  - sk
+  - sl
+  - es
+  - sv
+  - eu
+  - ca
+  - ka
+  - mk
+  - als
+  - sr
+  - tr
+  - uk
+  - is
+  - nob
+
+langs_multiblimp:
+  - en
+  - cs
+  - da
+  - nl
+  - et
+  - fi
+  - fr
+  - de
+  - el
+  - hu
+  - ga
+  - it
+  - lv
+  - lt
+  - pl
+  - pt
+  - ro
+  - sk
+  - sl
+  - es
+  - sv
+  - gl
+  - eu
+  - ca
+  - ka
+  - mk
+  - sq
+  - hbs
+  - tr
+  - uk
+  - is
+
+langs_marenahard:
+  - cs
+  - nl
+  - en
+  - et
+  - fr
+  - de
+  - el
+  - it
+  - pl
+  - pt
+  - ro
+  - es
+  - tr
+  - uk
+
+langs_mtbenchx:
+  - de
+  - en
+  - es
+  - fr
+  - it
+
+langs_multiifeval:
+  - en
+  - es
+  - fr
+  - it 
+  - pt
+
+langs_xstorycloze:
+  - en 
+  - es 
+  - eu
+
+langs_xnli:
+  - bg 
+  - en 
+  - es
+  - fr 
+  - de
+  - tr
+
+langs_pawsx:
+ - de 
+ - en 
+ - es 
+ - fr

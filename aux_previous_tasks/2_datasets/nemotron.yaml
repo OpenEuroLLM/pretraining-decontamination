@@ -1,0 +1,9 @@
+
+nemotron:
+  dataset_path: nemotron-cc
+  lang: eng_Latn
+  chunk_size: 100
+  directories:
+    - "1.0/high/actual"
+    - "1.0/medium/actual"
+    - "1.0/medium-high/actual"

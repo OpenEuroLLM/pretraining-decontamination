@@ -1,0 +1,10 @@
+/data/finemath-0.0.0/uuid/finemath-4plus/train-00030-of-00064.jsonl.zst
+/data/finemath-0.0.0/uuid/finemath-4plus/train-00031-of-00064.jsonl.zst
+/data/finemath-0.0.0/uuid/finemath-4plus/train-00032-of-00064.jsonl.zst
+/data/finemath-0.0.0/uuid/finemath-4plus/train-00033-of-00064.jsonl.zst
+/data/finemath-0.0.0/uuid/finemath-4plus/train-00034-of-00064.jsonl.zst
+/data/finemath-0.0.0/uuid/finemath-4plus/train-00035-of-00064.jsonl.zst
+/data/finemath-0.0.0/uuid/finemath-4plus/train-00036-of-00064.jsonl.zst
+/data/finemath-0.0.0/uuid/finemath-4plus/train-00037-of-00064.jsonl.zst
+/data/finemath-0.0.0/uuid/finemath-4plus/train-00038-of-00064.jsonl.zst
+/data/finemath-0.0.0/uuid/finemath-4plus/train-00039-of-00064.jsonl.zst

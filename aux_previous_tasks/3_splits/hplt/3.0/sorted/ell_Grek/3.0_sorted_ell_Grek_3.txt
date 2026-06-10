@@ -1,0 +1,2 @@
+/data/hplt/3.0/sorted/ell_Grek/8_2.jsonl.zst
+/data/hplt/3.0/sorted/ell_Grek/9_1.jsonl.zst

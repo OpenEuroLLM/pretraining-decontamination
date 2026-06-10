@@ -1,0 +1,7 @@
+tasks:
+
+  - name: benchmarks.code.multilingual_benchmarks.MultiBlimp
+    params: {lang: ga, split_type: train}
+    
+  - name: benchmarks.code.multilingual_benchmarks.Flores200
+    params: {lang: ga, split_type: devtest}

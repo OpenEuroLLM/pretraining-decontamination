@@ -1,0 +1,2 @@
+/data/finepdfs/1.0.0/edu/ekk_Latn/train/000_00000.jsonl.zst
+/data/finepdfs/1.0.0/edu/ekk_Latn/train/000_00001.jsonl.zst

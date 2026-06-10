@@ -1,0 +1,6 @@
+olmo-mix_pes2o:
+  dataset_path: olmo-mix-1124
+  chunk_size: 4
+  lang: eng_Latn
+  directories:
+    - "source/pes2o"

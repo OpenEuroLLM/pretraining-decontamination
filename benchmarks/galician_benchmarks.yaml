@@ -1,0 +1,37 @@
+tasks:
+
+  - name: benchmarks.code.multilingual_benchmarks.MultiBlimp
+    params: {lang: gl, split_type: train}
+
+  - name: benchmarks.code.galicianbench_benchmarks.GalicianBench_Belebele
+    params: {split_type: train}
+
+  - name: benchmarks.code.galicianbench_benchmarks.GalicianBench_Galcola
+    params: {split_type: test}
+
+  - name: benchmarks.code.galicianbench_benchmarks.GalicianBench_MGSM
+    params: {split_type: test}
+
+  - name: benchmarks.code.galicianbench_benchmarks.GalicianBench_OpenBookQA
+    params: {split_type: test}
+
+  - name: benchmarks.code.galicianbench_benchmarks.GalicianBench_Parafrases
+    params: {split_type: test}
+
+  - name: benchmarks.code.galicianbench_benchmarks.GalicianBench_PAWS
+    params: {split_type: test}
+
+  - name: benchmarks.code.galicianbench_benchmarks.GalicianBench_Summarization
+    params: {split_type: test}
+
+  - name: benchmarks.code.galicianbench_benchmarks.GalicianBench_Truthfulqa
+    params: {split_type: validation}
+
+  - name: benchmarks.code.galicianbench_benchmarks.GalicianBench_XNLI
+    params: {split_type: test}
+
+  - name: benchmarks.code.galicianbench_benchmarks.GalicianBench_XStoryCloze
+    params: {split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Flores200
+    params: {split_type: devtest, lang: gl}

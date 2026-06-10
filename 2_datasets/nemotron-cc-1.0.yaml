@@ -1,0 +1,9 @@
+nemotron-cc-1.0:
+  dataset_path: collection/flag/nemotron-cc-1.0
+  metadata_path: collection/flag/nemotron-cc-1.0/metadata.yaml
+  lang: eng_Latn
+  chunk_size: 5
+  directories:
+    - "source/high/actual"
+    - "source/medium/actual"
+    - "source/medium-high/actual"

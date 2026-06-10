@@ -1,0 +1,55 @@
+tasks:
+
+  - name: benchmarks.code.multilingual_benchmarks.MultiBlimp
+    params: {lang: eu, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.Belebele
+    params: {lang: eu, split_type: test}
+  
+  - name: benchmarks.code.multilingual_benchmarks.Include
+    params: {lang: eu, split_type: test}
+
+  - name: benchmarks.code.basquebench_benchmarks.BasqueBench_XNLI
+    params: {split_type: test}
+
+  - name: benchmarks.code.basquebench_benchmarks.BasqueBench_ArcChallenge
+    params: {split_type: test}
+
+  - name: benchmarks.code.basquebench_benchmarks.BasqueBench_ArcEasy
+    params: {split_type: test}
+
+  - name: benchmarks.code.basquebench_benchmarks.BasqueBench_MGSM
+    params: {split_type: test}
+
+  - name: benchmarks.code.basquebench_benchmarks.BasqueBench_PAWS
+    params: {split_type: test}
+
+  - name: benchmarks.code.basquebench_benchmarks.BasqueBench_PIQA
+    params: {split_type: validation}
+
+  - name: benchmarks.code.basquebench_benchmarks.BasqueBench_WNLI
+    params: {split_type: validation}
+    
+  - name: benchmarks.code.basquebench_benchmarks.BasqueBench_XCOPA
+    params: {split_type: test}
+
+  - name: benchmarks.code.basquebench_benchmarks.BasqueBench_EusExams
+    params: {split_type: test}
+
+  - name: benchmarks.code.basquebench_benchmarks.BasqueBench_EusProficiency
+    params: {split_type: test}
+
+  - name: benchmarks.code.basquebench_benchmarks.BasqueBench_EusReading
+    params: {split_type: test}
+  
+  - name: benchmarks.code.basquebench_benchmarks.BasqueBench_EusTrivia
+    params: {split_type: test}
+
+  - name: benchmarks.code.basquebench_benchmarks.BasqueBench_QNLI
+    params: {split_type: test}
+    
+  - name: benchmarks.code.multilingual_benchmarks.Flores200
+    params: {lang: eu, split_type: devtest}
+
+  - name: benchmarks.code.multilingual_benchmarks.XStoryCloze
+    params: {lang: eu, split_type: eval}

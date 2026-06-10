@@ -1,0 +1,10 @@
+/data/collection/flag/finepdfs-1.0.0/source/eng_Latn/001_00040.jsonl.zst
+/data/collection/flag/finepdfs-1.0.0/source/eng_Latn/001_00041.jsonl.zst
+/data/collection/flag/finepdfs-1.0.0/source/eng_Latn/001_00042.jsonl.zst
+/data/collection/flag/finepdfs-1.0.0/source/eng_Latn/001_00043.jsonl.zst
+/data/collection/flag/finepdfs-1.0.0/source/eng_Latn/001_00044.jsonl.zst
+/data/collection/flag/finepdfs-1.0.0/source/eng_Latn/001_00045.jsonl.zst
+/data/collection/flag/finepdfs-1.0.0/source/eng_Latn/001_00046.jsonl.zst
+/data/collection/flag/finepdfs-1.0.0/source/eng_Latn/001_00047.jsonl.zst
+/data/collection/flag/finepdfs-1.0.0/source/eng_Latn/001_00048.jsonl.zst
+/data/collection/flag/finepdfs-1.0.0/source/eng_Latn/001_00049.jsonl.zst

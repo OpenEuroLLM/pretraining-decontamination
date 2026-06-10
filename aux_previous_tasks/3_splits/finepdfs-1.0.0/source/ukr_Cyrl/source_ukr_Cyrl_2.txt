@@ -1,0 +1,3 @@
+/data/finepdfs-1.0.0/source/ukr_Cyrl/001_00001.jsonl.zst
+/data/finepdfs-1.0.0/source/ukr_Cyrl/001_00002.jsonl.zst
+/data/finepdfs-1.0.0/source/ukr_Cyrl/001_00003.jsonl.zst

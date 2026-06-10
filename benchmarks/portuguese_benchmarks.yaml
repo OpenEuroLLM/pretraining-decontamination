@@ -1,0 +1,34 @@
+tasks:
+
+  - name: benchmarks.code.multilingual_benchmarks.MultiBlimp
+    params: {lang: pt, split_type: train}
+    
+  - name: benchmarks.code.multilingual_benchmarks.Belebele
+    params: {lang: pt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Include
+    params: {lang: pt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Flores200
+    params: {lang: pt, split_type: devtest}
+
+  - name: benchmarks.code.multilingual_benchmarks.m_ArenaHard
+    params: {lang: pt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.PolyMath
+    params: {lang: pt}
+
+  - name: benchmarks.code.multilingual_benchmarks.XWinograd
+    params: {lang: pt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.XWinogradNoBlanks
+    params: {lang: pt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.MMMLU
+    params: {lang: pt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Multi_IFEval
+    params: {lang: pt, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalMMLU_Full
+    params: {lang: pt, split_type: test}

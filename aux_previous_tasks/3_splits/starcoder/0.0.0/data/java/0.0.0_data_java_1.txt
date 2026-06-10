@@ -1,0 +1,10 @@
+/data/starcoder/0.0.0/data/java/train-00010-of-00087.jsonl.zst
+/data/starcoder/0.0.0/data/java/train-00011-of-00087.jsonl.zst
+/data/starcoder/0.0.0/data/java/train-00012-of-00087.jsonl.zst
+/data/starcoder/0.0.0/data/java/train-00013-of-00087.jsonl.zst
+/data/starcoder/0.0.0/data/java/train-00014-of-00087.jsonl.zst
+/data/starcoder/0.0.0/data/java/train-00015-of-00087.jsonl.zst
+/data/starcoder/0.0.0/data/java/train-00016-of-00087.jsonl.zst
+/data/starcoder/0.0.0/data/java/train-00017-of-00087.jsonl.zst
+/data/starcoder/0.0.0/data/java/train-00018-of-00087.jsonl.zst
+/data/starcoder/0.0.0/data/java/train-00019-of-00087.jsonl.zst

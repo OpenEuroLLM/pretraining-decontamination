@@ -1,0 +1,108 @@
+tasks:
+  - name: benchmarks.code.english_benchmarks.MMLU
+    params: {split_type: test}
+
+  - name: benchmarks.code.english_benchmarks.COPA
+    params: {split_type: validation}
+
+  - name: benchmarks.code.english_benchmarks.Lambada
+    params: {split_type: test}
+
+  - name: benchmarks.code.english_benchmarks.OpenBookQA
+    params: {split_type: test}
+
+  - name: benchmarks.code.english_benchmarks.ArcChallenge
+    params: {split_type: test}
+
+  - name: benchmarks.code.english_benchmarks.ArcEasy
+    params: {split_type: test}
+
+  - name: benchmarks.code.english_benchmarks.BoolQ
+    params: {split_type: validation}
+
+  - name: benchmarks.code.english_benchmarks.HellaSwag
+    params: {split_type: validation}
+
+  - name: benchmarks.code.english_benchmarks.CommonsenseQA
+    params: {split_type: validation}
+
+  - name: benchmarks.code.english_benchmarks.PIQA
+    params: {split_type: validation}
+
+  - name: benchmarks.code.english_benchmarks.GSM8K
+    params: {split_type: test}
+
+  - name: benchmarks.code.english_benchmarks.MBPP
+    params: {split_type: test}
+
+  - name: benchmarks.code.english_benchmarks.MBPP_Plus
+    params: {split_type: test}
+
+  - name: benchmarks.code.english_benchmarks.HumanEval
+    params: {split_type: test}
+
+  - name: benchmarks.code.english_benchmarks.HumanEval_Plus
+    params: {split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.MultiBlimp
+    params: {lang: en, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.Belebele
+    params: {lang: en, split_type: test}
+    
+  - name: benchmarks.code.multilingual_benchmarks.PolyMath
+    params: {lang: en}
+
+  - name: benchmarks.code.multilingual_benchmarks.XStoryCloze
+    params: {lang: en, split_type: eval}
+
+  - name: benchmarks.code.multilingual_benchmarks.XWinograd
+    params: {lang: en, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.XWinogradNoBlanks
+    params: {lang: en, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Flores200
+    params: {lang: en, split_type: devtest}
+
+  - name: benchmarks.code.english_benchmarks.GPQA
+    params: {split_type: train}
+
+  - name: benchmarks.code.english_benchmarks.AIME_I_25
+    params: {split_type: test}
+    
+  - name: benchmarks.code.english_benchmarks.AIME_II_25
+    params: {split_type: test}
+
+  - name: benchmarks.code.english_benchmarks.Hendrycks_MATH
+    params: {split_type: test}
+
+  - name: benchmarks.code.english_benchmarks.IFEval
+    params: {split_type: train}
+  
+  - name: benchmarks.code.english_benchmarks.AlpacaEval
+    params: {file_path: "benchmarks/data/alpaca-eval.csv"}
+
+  - name: benchmarks.code.multilingual_benchmarks.m_ArenaHard
+    params: {lang: en, split_type: test}
+
+  - name: benchmarks.code.english_benchmarks.DoNotAnswer
+    params: {split_type: train}
+
+  - name: benchmarks.code.english_benchmarks.ToxiGen
+    params: {split_type: test}
+
+  - name: benchmarks.code.english_benchmarks.MTBench
+    params: {file_path: "benchmarks/data/mtbench101.jsonl"}
+
+  - name: benchmarks.code.multilingual_benchmarks.MTBench_X
+    params: {lang: en, file_dir: "benchmarks/data/mt_bench_X"}
+
+  - name: benchmarks.code.multilingual_benchmarks.Multi_IFEval
+    params: {lang: en, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.XNLI
+    params: {lang: en, split_type: validation}
+
+  - name: benchmarks.code.multilingual_benchmarks.PAWS_x
+    params: {lang: en, split_type: test}

@@ -1,0 +1,4 @@
+tasks:
+  
+  - name: benchmarks.code.multilingual_benchmarks.Flores200
+    params: {lang: bs, split_type: devtest}

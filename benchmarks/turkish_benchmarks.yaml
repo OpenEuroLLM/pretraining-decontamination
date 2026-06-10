@@ -1,0 +1,24 @@
+tasks:
+  - name: benchmarks.code.multilingual_benchmarks.Belebele
+    params: {lang: tr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalMMLU_Full
+    params: {lang: tr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Include
+    params: {lang: tr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Flores200
+    params: {lang: tr, split_type: devtest}
+
+  - name: benchmarks.code.multilingual_benchmarks.m_ArenaHard
+    params: {lang: tr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.MultiBlimp
+    params: {lang: tr, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.XNLI
+    params: {lang: tr, split_type: validation}
+    
+  - name: benchmarks.code.multilingual_benchmarks.XCopa
+    params: {lang: tr, split_type: test}

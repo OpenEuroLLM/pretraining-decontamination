@@ -1,0 +1,2 @@
+/data/starcoder/0.0.0/data/common-lisp/train-00000-of-00002.jsonl.zst
+/data/starcoder/0.0.0/data/common-lisp/train-00001-of-00002.jsonl.zst

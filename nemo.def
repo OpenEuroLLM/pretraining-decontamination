@@ -1,0 +1,15 @@
+Bootstrap: docker
+From: python:3.10-slim
+%files 
+    /work/alicia/NeMo-Curator /opt/NeMo-Curator
+%post
+    apt-get update && apt-get install -y --no-install-recommends build-essential python3-dev python3-pip parallel 
+    pip3 install --no-cache-dir --upgrade pip
+    mkdir -p /app
+    cd /app
+    pip install polars iso639-lang loguru
+    pip install -e /opt/NeMo-Curator
+    rm -rf ~/.cache/pip
+
+%runscript
+    exec "$@"

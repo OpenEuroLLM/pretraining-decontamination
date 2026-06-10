@@ -1,0 +1,4 @@
+/data/finepdfs-1.0.0/source/deu_Latn/000_00032.jsonl.zst
+/data/finepdfs-1.0.0/source/deu_Latn/000_00033.jsonl.zst
+/data/finepdfs-1.0.0/source/deu_Latn/000_00034.jsonl.zst
+/data/finepdfs-1.0.0/source/deu_Latn/000_00035.jsonl.zst

@@ -1,0 +1,8 @@
+
+megamath:
+  dataset_path: megamath-0.0.0
+  lang: eng_Latn
+  chunk_size: 10
+  directories:
+    - "uuid/megamath-text-code-block"
+    - "uuid/megamath-web-pro"

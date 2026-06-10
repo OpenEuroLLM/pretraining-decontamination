@@ -1,0 +1,6 @@
+finepdfs-1.0.0:
+  dataset_path: collection/flag/finepdfs-1.0.0
+  metadata_path: collection/flag/finepdfs-1.0.0/metadata.yaml
+  chunk_size: 10
+  directories:
+    - "source/{lang}"

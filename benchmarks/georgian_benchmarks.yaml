@@ -1,0 +1,10 @@
+tasks:
+  
+  - name: benchmarks.code.multilingual_benchmarks.Flores200
+    params: {lang: ka, split_type: devtest}
+
+  - name: benchmarks.code.multilingual_benchmarks.MultiBlimp
+    params: {lang: ka, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.Belebele
+    params: {lang: ka, split_type: test}
