@@ -71,3 +71,29 @@ tasks:
 
   - name: benchmarks.code.multilingual_benchmarks.Flores200
     params: {split_type: devtest, lang: ca}
+  - name: benchmarks.code.multilingual_benchmarks.HellaSwagMt
+    params: {lang: ca, split_type: validation}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
+    params: {lang: ca, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalMGSM
+    params: {lang: ca}
+
+  - name: benchmarks.code.multilingual_benchmarks.Sib200
+    params: {lang: ca, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.WikiAnn
+    params: {lang: ca, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.mDollyMT
+    params: {lang: ca}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
+    params: {lang: ca}
+
+  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+    params: {lang: ca, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
+    params: {lang: ca}

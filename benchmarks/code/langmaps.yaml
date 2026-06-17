@@ -219,7 +219,755 @@ langs_xnli:
   - tr
 
 langs_pawsx:
- - de 
- - en 
- - es 
+ - de
+ - en
+ - es
  - fr
+
+langs_oneruler:
+  - cs
+  - da
+  - de
+  - en
+  - es
+  - fa
+  - fi
+  - fr
+  - hi
+  - hu
+  - it
+  - ja
+  - ko
+  - nl
+  - no
+  - pl
+  - pt
+  - ru
+  - sr
+  - st
+  - sv
+  - sw
+  - ta
+  - uk
+  - vi
+  - zh
+
+
+
+langs_doclevel_mt:
+  - de
+  - en
+
+langs_hellaswag_mt:
+  - ca
+  - da
+  - de
+  - es
+  - eu
+  - fr
+  - hr
+  - hu
+  - it
+  - nl
+  - pt
+  - ro
+  - sk
+  - sr
+  - sv
+  - uk
+
+langs_xcsqa:
+  - de
+  - en
+  - es
+  - fr
+  - it
+  - nl
+  - pl
+  - pt
+
+langs_global_piqa:
+  - als_latn
+  - bos_latn
+  - bul_cyrl
+  - cat_latn
+  - ces_latn
+  - dan_latn
+  - deu_latn
+  - ekk_latn
+  - ell_grek
+  - eus_latn
+  - fin_latn
+  - fra_latn_fran
+  - glg_latn
+  - hrv_latn
+  - hun_latn
+  - isl_latn
+  - ita_latn
+  - kat_geor
+  - lit_latn
+  - lvs_latn
+  - mkd_cyrl
+  - nld_latn
+  - nob_latn
+  - pol_latn
+  - por_latn_port
+  - ron_latn
+  - slk_latn
+  - slv_latn
+  - spa_latn_spai
+  - srp_cyrl
+  - swe_latn
+  - tur_latn
+  - ukr_cyrl
+
+langs_global_mgsm:
+  - ca
+  - cs
+  - de
+  - el
+  - en
+  - es
+  - eu
+  - fr
+  - gl
+  - hu
+  - sr
+
+langs_sib200:
+  - als_Latn
+  - bos_Latn
+  - bul_Cyrl
+  - cat_Latn
+  - ces_Latn
+  - dan_Latn
+  - deu_Latn
+  - ell_Grek
+  - est_Latn
+  - eus_Latn
+  - fin_Latn
+  - fra_Latn
+  - gle_Latn
+  - glg_Latn
+  - hrv_Latn
+  - hun_Latn
+  - isl_Latn
+  - ita_Latn
+  - kat_Geor
+  - lit_Latn
+  - lvs_Latn
+  - mkd_Cyrl
+  - mlt_Latn
+  - nld_Latn
+  - nob_Latn
+  - pol_Latn
+  - por_Latn
+  - ron_Latn
+  - slk_Latn
+  - slv_Latn
+  - spa_Latn
+  - srp_Cyrl
+  - swe_Latn
+  - tur_Latn
+  - ukr_Cyrl
+
+langs_mmlu_pro_x:
+  - cs
+  - de
+  - en
+  - es
+  - fr
+  - hu
+  - it
+  - pt
+  - sr
+  - uk
+
+langs_wikiann:
+  - bg
+  - bs
+  - ca
+  - cs
+  - da
+  - de
+  - el
+  - en
+  - es
+  - et
+  - eu
+  - fi
+  - fr
+  - ga
+  - gl
+  - hr
+  - hu
+  - is
+  - it
+  - ka
+  - lt
+  - lv
+  - mk
+  - mt
+  - nl
+  - no
+  - pl
+  - pt
+  - ro
+  - sk
+  - sl
+  - sq
+  - sr
+  - sv
+  - tr
+  - uk
+
+langs_m_dolly_mt:
+  - bg
+  - ca
+  - cs
+  - da
+  - de
+  - el
+  - en
+  - es
+  - et
+  - eu
+  - fi
+  - fr
+  - ga
+  - gl
+  - hr
+  - hu
+  - it
+  - lt
+  - lv
+  - mt
+  - nl
+  - no
+  - pl
+  - pt
+  - ro
+  - sk
+  - sl
+  - sr
+  - sv
+  - tr
+  - uk
+
+langs_arc_challenge_mt:
+  - bg
+  - cs
+  - da
+  - de
+  - el
+  - es
+  - et
+  - fi
+  - fr
+  - hu
+  - it
+  - lt
+  - lv
+  - nb
+  - nl
+  - pl
+  - pt
+  - ro
+  - sk
+  - sl
+  - sv
+
+langs_marenahard_v2: 
+ - 'ar'
+ - 'cs'
+ - 'de'
+ - 'el'
+ - 'en'
+ - 'es'
+ - 'fa'
+ - 'fr'
+ - 'he'
+ - 'hi'
+ - 'id'
+ - 'it'
+ - 'ja'
+ - 'ko'
+ - 'nl'
+ - 'pl'
+ - 'pt'
+ - 'ro'
+ - 'ru'
+ - 'tr'
+ - 'uk'
+ - 'vi'
+ - 'zh'
+
+langs_marenahard_v21:
+ - 'am'
+ - 'ar'
+ - 'bg'
+ - 'bn'
+ - 'ca'
+ - 'cs'
+ - 'cy'
+ - 'da'
+ - 'de'
+ - 'el'
+ - 'en'
+ - 'es'
+ - 'et'
+ - 'eu'
+ - 'fa'
+ - 'fi'
+ - 'fr'
+ - 'ga'
+ - 'gl'
+ - 'gu'
+ - 'ha'
+ - 'he'
+ - 'hi'
+ - 'hr'
+ - 'hu'
+ - 'id'
+ - 'ig'
+ - 'it'
+ - 'ja'
+ - 'jv'
+ - 'km'
+ - 'ko'
+ - 'lo'
+ - 'lt'
+ - 'lv'
+ - 'mg'
+ - 'mr'
+ - 'ms'
+ - 'mt'
+ - 'my'
+ - 'ne'
+ - 'nl'
+ - 'no'
+ - 'pa'
+ - 'pl'
+ - 'pt'
+ - 'ro'
+ - 'ru'
+ - 'sk'
+ - 'sl'
+ - 'sn'
+ - 'sr'
+ - 'sv'
+ - 'sw'
+ - 'ta'
+ - 'te'
+ - 'th'
+ - 'tl'
+ - 'tr'
+ - 'uk'
+ - 'ur'
+ - 'vi'
+ - 'wo'
+ - 'xh'
+ - 'yo'
+ - 'zh'
+ - 'zu'
+
+langs_aya_redteaming:
+ - 'arabic'
+ - 'english'
+ - 'filipino'
+ - 'french'
+ - 'hindi'
+ - 'russian'
+ - 'serbian'
+ - 'spanish'
+
+langs_multijail:
+ - 'en'
+ - 'zh'
+ - 'it'
+ - 'vi'
+ - 'ar'
+ - 'ko'
+ - 'th'
+ - 'bn'
+ - 'sw'
+ - 'jv'
+
+langs_menlo:
+- 'ar' 
+- 'ar_Latn_EG' 
+- 'bg_BG'
+- 'bn_BD' 
+- 'cs_CZ' 
+- 'da_DK'
+- 'de_DE'
+- 'el_GR'
+- 'en_AU'
+- 'en_GB' 
+- 'en_IN' 
+- 'en_US' 
+- 'es_ES' 
+- 'es_MX' 
+- 'fa_IR' 
+- 'fr_FR' 
+- 'gu_IN' 
+- 'he_IL'
+- 'hi_IN' 
+- 'hi_Latn_IN' 
+- 'hr_HR' 
+- 'hu_HU' 
+- 'id_ID' 
+- 'it_IT' 
+- 'ja_JP' 
+- 'ko_KR'
+- 'mr_IN' 
+- 'ms_MY' 
+- 'ne_NP' 
+- 'nl_NL' 
+- 'pl_PL'
+- 'pt_BR'
+- 'pt_PT'
+- 'ro_RO'
+- 'ru_RU'
+- 'sk_SK' 
+- 'sv_SE' 
+- 'sw_KE'
+- 'th_TH'
+- 'tl_PH'
+- 'tr_TR'
+- 'uk_UA'
+- 'ur_Latn_PK'
+- 'ur_PK'
+- 'vi_VN'
+- 'zh_CN'
+- 'zh_TW'
+
+
+langs_blend:
+ - DZ
+ - AS
+ - AZ
+ - CN
+ - ET 
+ - GR 
+ - ID
+ - IR 
+ - MX
+ - KP
+ - NG
+ - KR
+ - ES
+ - GB
+ - US
+ - JB
+
+
+langs_opensubtitles:
+  - pass
+
+
+langs_tatoebamt:
+  - 'afr'
+  - 'ain'
+  - 'ara'
+  - 'arq'
+  - 'avk'
+  - 'awa'
+  - 'aze'
+  - 'aze_Latn'
+  - 'bel'
+  - 'ben'
+  - 'ber'
+  - 'ber_Latn'
+  - 'bos_Latn'
+  - 'bre'
+  - 'bua'
+  - 'bua_Cyrl'
+  - 'bul'
+  - 'cat'
+  - 'cbk'
+  - 'ceb'
+  - 'ces'
+  - 'cha'
+  - 'chm'
+  - 'chv'
+  - 'cmn_Hans'
+  - 'cmn_Hant'
+  - 'cor'
+  - 'crh'
+  - 'cym'
+  - 'dan'
+  - 'deu'
+  - 'dsb'
+  - 'dtp'
+  - 'egl'
+  - 'ell'
+  - 'eng'
+  - 'epo'
+  - 'est'
+  - 'eus'
+  - 'fao'
+  - 'fas'
+  - 'fin'
+  - 'fkv'
+  - 'fra'
+  - 'frr'
+  - 'fry'
+  - 'gcf'
+  - 'gla'
+  - 'gle'
+  - 'glg'
+  - 'gos'
+  - 'got'
+  - 'grc'
+  - 'grn'
+  - 'gsw'
+  - 'hbs'
+  - 'heb'
+  - 'hin'
+  - 'hoc'
+  - 'hoc_Latn'
+  - 'hrv'
+  - 'hrx'
+  - 'hsb'
+  - 'hun'
+  - 'hye'
+  - 'ido'
+  - 'ido_Latn'
+  - 'ile'
+  - 'ile_Latn'
+  - 'ilo'
+  - 'ina'
+  - 'ina_Latn'
+  - 'ind'
+  - 'isl'
+  - 'ita'
+  - 'jav'
+  - 'jbo'
+  - 'jbo_Latn'
+  - 'jpn'
+  - 'jpn_Hani'
+  - 'jpn_Hira'
+  - 'jpn_Kana'
+  - 'kab'
+  - 'kat'
+  - 'kaz'
+  - 'kaz_Cyrl'
+  - 'kha'
+  - 'khm'
+  - 'kor'
+  - 'kor_Hang'
+  - 'kur'
+  - 'kur_Latn'
+  - 'kzj'
+  - 'kzj_Latn'
+  - 'lad'
+  - 'lad_Latn'
+  - 'lat'
+  - 'lat_Latn'
+  - 'lav'
+  - 'lfn'
+  - 'lfn_Cyrl'
+  - 'lfn_Latn'
+  - 'lit'
+  - 'ltz'
+  - 'mal'
+  - 'mar'
+  - 'mkd'
+  - 'mlt'
+  - 'mon'
+  - 'mri'
+  - 'msa'
+  - 'mya'
+  - 'nds'
+  - 'nld'
+  - 'nno'
+  - 'nob'
+  - 'nor'
+  - 'nov'
+  - 'nst'
+  - 'oci'
+  - 'orv'
+  - 'ota'
+  - 'ota_Arab'
+  - 'ota_Latn'
+  - 'pam'
+  - 'pcd'
+  - 'pes'
+  - 'pms'
+  - 'pol'
+  - 'por'
+  - 'prg'
+  - 'que'
+  - 'rom'
+  - 'ron'
+  - 'run'
+  - 'rus'
+  - 'sah'
+  - 'slv'
+  - 'spa'
+  - 'sqi'
+  - 'srp_Cyrl'
+  - 'srp_Latn'
+  - 'swa'
+  - 'swe'
+  - 'swg'
+  - 'tam'
+  - 'tat'
+  - 'tel'
+  - 'tgl'
+  - 'tha'
+  - 'tlh'
+  - 'tlh_Latn'
+  - 'toki'
+  - 'toki_Latn'
+  - 'tuk'
+  - 'tuk_Latn'
+  - 'tur'
+  - 'tzl'
+  - 'tzl_Latn'
+  - 'uig'
+  - 'uig_Arab'
+  - 'ukr'
+  - 'urd'
+  - 'uzb'
+  - 'uzb_Latn'
+  - 'vie'
+  - 'vol'
+  - 'war'
+  - 'wuu'
+  - 'xal'
+  - 'yid'
+  - 'yue_Hans'
+  - 'yue_Hant'
+  - 'zho'
+  - 'zsm_Latn'
+  - 'zza'
+
+
+langs_aya_evaluation_suite:
+  - 'ace'
+  - 'acm'
+  - 'acq'
+  - 'aeb'
+  - 'afr'
+  - 'ajp'
+  - 'als'
+  - 'amh'
+  - 'apc'
+  - 'arb'
+  - 'ars'
+  - 'ary'
+  - 'arz'
+  - 'azb'
+  - 'azj'
+  - 'bel'
+  - 'ben'
+  - 'bjn'
+  - 'bul'
+  - 'cat'
+  - 'ceb'
+  - 'ces'
+  - 'ckb'
+  - 'cym'
+  - 'dan'
+  - 'deu'
+  - 'ell'
+  - 'eng'
+  - 'epo'
+  - 'est'
+  - 'eus'
+  - 'fin'
+  - 'fra'
+  - 'gla'
+  - 'gle'
+  - 'glg'
+  - 'guj'
+  - 'hat'
+  - 'hau'
+  - 'heb'
+  - 'hin'
+  - 'hun'
+  - 'hye'
+  - 'ibo'
+  - 'ind'
+  - 'isl'
+  - 'ita'
+  - 'jav'
+  - 'jpn'
+  - 'kan'
+  - 'kas'
+  - 'kat'
+  - 'kaz'
+  - 'khk'
+  - 'khm'
+  - 'kir'
+  - 'kmr'
+  - 'knc'
+  - 'kor'
+  - 'lao'
+  - 'lit'
+  - 'ltz'
+  - 'lvs'
+  - 'mal'
+  - 'mar'
+  - 'min'
+  - 'mkd'
+  - 'mlt'
+  - 'mni'
+  - 'mri'
+  - 'mya'
+  - 'nld'
+  - 'nno'
+  - 'nob'
+  - 'npi'
+  - 'nso'
+  - 'pbt'
+  - 'pes'
+  - 'plt'
+  - 'pol'
+  - 'por'
+  - 'ron'
+  - 'rus'
+  - 'sin'
+  - 'slk'
+  - 'slv'
+  - 'smo'
+  - 'sna'
+  - 'snd'
+  - 'som'
+  - 'sot'
+  - 'spa'
+  - 'srp'
+  - 'sun'
+  - 'swe'
+  - 'swh'
+  - 'tam'
+  - 'taq'
+  - 'tel'
+  - 'tgk'
+  - 'tha'
+  - 'tur'
+  - 'ukr'
+  - 'urd'
+  - 'uzn'
+  - 'vie'
+  - 'xho'
+  - 'ydd'
+  - 'yor'
+  - 'yue'
+  - 'zho'
+  - 'zsm'
+  - 'zul'
+
+langs_maime2025:
+- cs
+- da
+- de
+- fi
+- sk
+- sv
+
+langs_maime2026:
+- da
+- fi

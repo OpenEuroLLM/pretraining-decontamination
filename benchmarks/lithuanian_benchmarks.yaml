@@ -18,3 +18,27 @@ tasks:
 
 
 
+
+  - name: benchmarks.code.multilingual_benchmarks.ArcChallengeMt
+    params: {lang: lt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
+    params: {lang: lt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Sib200
+    params: {lang: lt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.WikiAnn
+    params: {lang: lt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.mDollyMT
+    params: {lang: lt}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
+    params: {lang: lt}
+
+  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+    params: {lang: lt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
+    params: {lang: lt}

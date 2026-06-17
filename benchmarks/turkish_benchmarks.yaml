@@ -22,3 +22,30 @@ tasks:
     
   - name: benchmarks.code.multilingual_benchmarks.XCopa
     params: {lang: tr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
+    params: {lang: tr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Sib200
+    params: {lang: tr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.WikiAnn
+    params: {lang: tr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.mDollyMT
+    params: {lang: tr}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v2
+    params: {lang: tr}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
+    params: {lang: tr}
+
+  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+    params: {lang: tr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Menlo
+    params: {lang: tr, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
+    params: {lang: tr}

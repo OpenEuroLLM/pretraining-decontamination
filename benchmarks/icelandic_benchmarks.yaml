@@ -7,3 +7,18 @@ tasks:
 
   - name: benchmarks.code.multilingual_benchmarks.MultiBlimp
     params: {lang: is, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
+    params: {lang: is, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Sib200
+    params: {lang: is, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.WikiAnn
+    params: {lang: is, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+    params: {lang: is, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
+    params: {lang: is}

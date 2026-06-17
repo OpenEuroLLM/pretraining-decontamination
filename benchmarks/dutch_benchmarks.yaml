@@ -18,5 +18,44 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.m_ArenaHard
     params: {lang: nl, split_type: test}
 
+  - name: benchmarks.code.multilingual_benchmarks.OneRuler
+    params: {lang: nl}
 
 
+
+
+  - name: benchmarks.code.multilingual_benchmarks.ArcChallengeMt
+    params: {lang: nl, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.HellaSwagMt
+    params: {lang: nl, split_type: validation}
+
+  - name: benchmarks.code.multilingual_benchmarks.Xcsqa
+    params: {lang: nl, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
+    params: {lang: nl, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Sib200
+    params: {lang: nl, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.WikiAnn
+    params: {lang: nl, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.mDollyMT
+    params: {lang: nl}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v2
+    params: {lang: nl}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
+    params: {lang: nl}
+
+  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+    params: {lang: nl, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Menlo
+    params: {lang: nl, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
+    params: {lang: nl}

@@ -8,3 +8,81 @@ tasks:
 
   - name: benchmarks.code.multilingual_benchmarks.Flores200
     params: {lang: nob, split_type: devtest}
+
+  - name: benchmarks.code.multilingual_benchmarks.OneRuler
+    params: {lang: no}
+
+  - name: benchmarks.code.multilingual_benchmarks.ArcChallengeMt
+    params: {lang: nb, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
+    params: {lang: nb, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Sib200
+    params: {lang: nb, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.WikiAnn
+    params: {lang: no, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.mDollyMT
+    params: {lang: no}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
+    params: {lang: no}
+
+  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+    params: {lang: no, split_type: test}
+
+  - name: benchmarks.code.noreval_benchmarks.NorEcSentence
+    params: {split_type: test}
+
+  - name: benchmarks.code.noreval_benchmarks.NorEcDocument
+    params: {split_type: test}
+
+  - name: benchmarks.code.noreval_benchmarks.NCB
+    params: {split_type: train}
+
+  - name: benchmarks.code.noreval_benchmarks.NorIdiom
+    params: {split_type: test}
+
+  - name: benchmarks.code.noreval_benchmarks.NorBelebele
+    params: {split_type: test}
+
+  - name: benchmarks.code.noreval_benchmarks.NRKQuizQA
+    params: {split_type: test}
+
+  - name: benchmarks.code.noreval_benchmarks.NorOpenBookQA
+    params: {split_type: test}
+
+  - name: benchmarks.code.noreval_benchmarks.NorCommonsenseQA
+    params: {split_type: train}
+
+  - name: benchmarks.code.noreval_benchmarks.NorTruthfulQAMC
+    params: {split_type: validation}
+
+  - name: benchmarks.code.noreval_benchmarks.NorQuAD
+    params: {split_type: test}
+
+  - name: benchmarks.code.noreval_benchmarks.NorTruthfulQAGen
+    params: {split_type: validation}
+
+  - name: benchmarks.code.noreval_benchmarks.AskGEC
+    params: {split_type: test}
+
+  - name: benchmarks.code.noreval_benchmarks.NorSumm
+    params: {split_type: test}
+
+  - name: benchmarks.code.noreval_benchmarks.TatoebaEngNor
+    params: {split_type: test}
+
+  - name: benchmarks.code.noreval_benchmarks.TatoebaNorEng
+    params: {split_type: test}
+
+  - name: benchmarks.code.noreval_benchmarks.NorRewriteInstruct
+    params: {split_type: test}
+
+  - name: benchmarks.code.noreval_benchmarks.NorSummarizeInstruct
+    params: {split_type: test}
+
+  - name: benchmarks.code.noreval_benchmarks.
+    params: {split_type: test}

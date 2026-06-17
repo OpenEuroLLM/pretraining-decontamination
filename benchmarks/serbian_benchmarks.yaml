@@ -14,3 +14,39 @@ tasks:
 
   - name: benchmarks.code.multilingual_benchmarks.Include
     params: {lang: sr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.OneRuler
+    params: {lang: sr}
+
+  - name: benchmarks.code.multilingual_benchmarks.HellaSwagMt
+    params: {lang: sr, split_type: validation}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
+    params: {lang: sr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalMGSM
+    params: {lang: sr}
+
+  - name: benchmarks.code.multilingual_benchmarks.Sib200
+    params: {lang: sr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.MMLUProX
+    params: {lang: sr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.WikiAnn
+    params: {lang: sr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.mDollyMT
+    params: {lang: sr}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
+    params: {lang: sr}
+
+  - name: benchmarks.code.multilingual_benchmarks.AyaRedTeaming
+    params: {lang: sr}
+
+  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+    params: {lang: sr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
+    params: {lang: sr}

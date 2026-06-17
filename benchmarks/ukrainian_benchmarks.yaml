@@ -16,3 +16,39 @@ tasks:
 
   - name: benchmarks.code.multilingual_benchmarks.MultiBlimp
     params: {lang: uk, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.OneRuler
+    params: {lang: uk}
+
+  - name: benchmarks.code.multilingual_benchmarks.HellaSwagMt
+    params: {lang: uk, split_type: validation}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
+    params: {lang: uk, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Sib200
+    params: {lang: uk, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.MMLUProX
+    params: {lang: uk, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.WikiAnn
+    params: {lang: uk, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.mDollyMT
+    params: {lang: uk}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v2
+    params: {lang: uk}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
+    params: {lang: uk}
+
+  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+    params: {lang: uk, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Menlo
+    params: {lang: uk, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
+    params: {lang: uk}

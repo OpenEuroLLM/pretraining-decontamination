@@ -35,3 +35,27 @@ tasks:
 
   - name: benchmarks.code.multilingual_benchmarks.Flores200
     params: {split_type: devtest, lang: gl}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
+    params: {lang: gl, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalMGSM
+    params: {lang: gl}
+
+  - name: benchmarks.code.multilingual_benchmarks.Sib200
+    params: {lang: gl, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.WikiAnn
+    params: {lang: gl, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.mDollyMT
+    params: {lang: gl}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
+    params: {lang: gl}
+
+  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+    params: {lang: gl, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
+    params: {lang: gl}

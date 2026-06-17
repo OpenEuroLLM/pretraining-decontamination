@@ -53,3 +53,30 @@ tasks:
 
   - name: benchmarks.code.multilingual_benchmarks.XStoryCloze
     params: {lang: eu, split_type: eval}
+    
+  - name: benchmarks.code.multilingual_benchmarks.HellaSwagMt
+    params: {lang: eu, split_type: validation}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
+    params: {lang: eu, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalMGSM
+    params: {lang: eu}
+
+  - name: benchmarks.code.multilingual_benchmarks.Sib200
+    params: {lang: eu, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.WikiAnn
+    params: {lang: eu, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.mDollyMT
+    params: {lang: eu}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
+    params: {lang: eu}
+
+  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+    params: {lang: eu, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
+    params: {lang: eu}

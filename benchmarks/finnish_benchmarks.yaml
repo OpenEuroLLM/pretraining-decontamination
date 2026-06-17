@@ -12,4 +12,59 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.Flores200
     params: {lang: fi, split_type: devtest}
 
+  - name: benchmarks.code.multilingual_benchmarks.mAIME2026
+    params: {lang: fi}
 
+  - name: benchmarks.code.multilingual_benchmarks.mAIME2025
+    params: {lang: fi}
+
+  - name: benchmarks.code.multilingual_benchmarks.OneRuler
+    params: {lang: fi}
+
+  - name: benchmarks.code.multilingual_benchmarks.ArcChallengeMt
+    params: {lang: fi, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
+    params: {lang: fi, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Sib200
+    params: {lang: fi, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.WikiAnn
+    params: {lang: fi, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.mDollyMT
+    params: {lang: fi}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
+    params: {lang: fi}
+
+  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+    params: {lang: fi, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
+    params: {lang: fi}
+
+  - name: benchmarks.code.finbench_benchmarks.FinnishBench_ARC_Challenge
+    params: {split_type: test}
+
+  - name: benchmarks.code.finbench_benchmarks.FinnishBench_Belebele
+    params: {split_type: test}
+
+  - name: benchmarks.code.finbench_benchmarks.FinnishBench_GoldenSwag
+    params: {split_type: train}
+
+  - name: benchmarks.code.finbench_benchmarks.FinnishBench_OpenGPT_X_TruthfulQAX
+    params: {split_type: validation}
+
+  - name: benchmarks.code.finbench_benchmarks.FinnishBench_Scandisent
+    params: {split_type: test}
+
+  - name: benchmarks.code.finbench_benchmarks.FinnishBench_Squad_Strip
+    params: {split_type: validation}
+
+  - name: benchmarks.code.finbench_benchmarks.FinnishBench_SIB_200
+    params: {split_type: test}
+
+  - name: benchmarks.code.finbench_benchmarks.FinnishBench_FBV1_Stripped
+    params: {split_type: default}

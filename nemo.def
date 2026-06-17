@@ -9,6 +9,7 @@ From: python:3.10-slim
     cd /app
     pip install polars iso639-lang loguru
     pip install -e /opt/NeMo-Curator
+    # pip install git+https://github.com/google/BIG-bench.git
     rm -rf ~/.cache/pip
 
 %runscript

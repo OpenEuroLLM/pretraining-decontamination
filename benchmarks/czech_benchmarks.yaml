@@ -15,5 +15,47 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.m_ArenaHard
     params: {lang: cs, split_type: test}
 
+  - name: benchmarks.code.multilingual_benchmarks.OneRuler
+    params: {lang: cs}
 
 
+
+
+  - name: benchmarks.code.multilingual_benchmarks.ArcChallengeMt
+    params: {lang: cs, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
+    params: {lang: cs, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalMGSM
+    params: {lang: cs}
+
+  - name: benchmarks.code.multilingual_benchmarks.Sib200
+    params: {lang: cs, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.MMLUProX
+    params: {lang: cs, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.WikiAnn
+    params: {lang: cs, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.mDollyMT
+    params: {lang: cs}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v2
+    params: {lang: cs}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
+    params: {lang: cs}
+
+  - name: benchmarks.code.multilingual_benchmarks.mAIME2025
+    params: {lang: cs}
+
+  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+    params: {lang: cs, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Menlo
+    params: {lang: cs, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
+    params: {lang: cs}

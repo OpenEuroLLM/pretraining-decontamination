@@ -12,6 +12,45 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.Flores200
     params: {lang: hu, split_type: devtest}
 
+  - name: benchmarks.code.multilingual_benchmarks.OneRuler
+    params: {lang: hu}
 
 
 
+
+
+  - name: benchmarks.code.multilingual_benchmarks.ArcChallengeMt
+    params: {lang: hu, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.HellaSwagMt
+    params: {lang: hu, split_type: validation}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
+    params: {lang: hu, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalMGSM
+    params: {lang: hu}
+
+  - name: benchmarks.code.multilingual_benchmarks.Sib200
+    params: {lang: hu, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.MMLUProX
+    params: {lang: hu, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.WikiAnn
+    params: {lang: hu, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.mDollyMT
+    params: {lang: hu}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
+    params: {lang: hu}
+
+  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+    params: {lang: hu, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Menlo
+    params: {lang: hu, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
+    params: {lang: hu}

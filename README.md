@@ -1,6 +1,8 @@
 
 ## 1. Environment 
 
+Recommended work folder is your home directory in Lumi, using this repo in, for example, `scratch` will throw Singularity bind errors.
+
 ### 1.1. Variables setup
 Prior to running any commands, modify the `env_variables.yaml` file and update the following variables to reflect your own configuration:
 
@@ -13,7 +15,7 @@ PROJECT_ID: "project_XXXX"
 # Temporary folder where data will be temporarily decompressed, etc.
 TMP_DIR: "/scratch/project_XXXX/users/your_username_YYYY/tmp"
 # Work folder for the decontamination pipeline: logs, middle files, final output.
-DECONTAMINATION_DIR: "/scratch/project_XXXX/users/your_username_YYYY/decontamination"
+DECONTAMINATION_DIR: "/scratch/project_XXXX/users/your_username_YYYY/decontamination-results"
 ```
 
 This step should only be performed once, unless the username or compute project changes at any point during processing.
@@ -22,7 +24,7 @@ This step should only be performed once, unless the username or compute project 
 
 This pipeline makes use of a custom Singularity image containing a modified version of NemoCurator. For convenience, the Singularity image may be copied directly from the following Lumi path into your root directory of this repository:
 
-`/users/tudormateiu/decontamination/pretraining-decontamination/nemo.sif`
+`/scratch/project_465002530/users/tudormateiu/decontamination/pretraining-decontamination/nemo.sif`
 
 ### 1.3. Indexed benchmark generated n-grams
 

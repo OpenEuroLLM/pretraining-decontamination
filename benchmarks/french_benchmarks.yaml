@@ -44,3 +44,80 @@ tasks:
 
   - name: benchmarks.code.multilingual_benchmarks.GlobalMMLU_Full
     params: {lang: fr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.ComparIA_FR
+    params: {}
+
+  - name: benchmarks.code.multilingual_benchmarks.OneRuler
+    params: {lang: fr}
+  - name: benchmarks.code.multilingual_benchmarks.ArcChallengeMt
+    params: {lang: fr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.HellaSwagMt
+    params: {lang: fr, split_type: validation}
+
+  - name: benchmarks.code.multilingual_benchmarks.Xcsqa
+    params: {lang: fr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
+    params: {lang: fr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalMGSM
+    params: {lang: fr}
+
+  - name: benchmarks.code.multilingual_benchmarks.Sib200
+    params: {lang: fr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.MMLUProX
+    params: {lang: fr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.WikiAnn
+    params: {lang: fr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.mDollyMT
+    params: {lang: fr}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v2
+    params: {lang: fr}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
+    params: {lang: fr}
+
+  - name: benchmarks.code.multilingual_benchmarks.AyaRedTeaming
+    params: {lang: fr}
+
+  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+    params: {lang: fr, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Menlo
+    params: {lang: fr, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
+    params: {lang: fr}
+
+  - name: benchmarks.code.frenchbench_benchmarks.FrenchBench_BoolQ
+    params: {split_type: test}
+
+  - name: benchmarks.code.frenchbench_benchmarks.FrenchBench_Opus100
+    params: {split_type: test}
+
+  - name: benchmarks.code.frenchbench_benchmarks.FrenchBench_MultiFQuad
+    params: {split_type: test}
+
+  - name: benchmarks.code.frenchbench_benchmarks.FrenchBench_French_Trivia
+    params: {split_type: train}
+
+  - name: benchmarks.code.frenchbench_benchmarks.FrenchBench_FQuad2
+    params: {split_type: test}
+
+  - name: benchmarks.code.frenchbench_benchmarks.FrenchBench_Grammar_Vocab_Reading
+    params: {}
+
+  - name: benchmarks.code.frenchbench_benchmarks.FinnishBench_Hellaswag
+    params: {split_type: validation}
+
+  - name: benchmarks.code.frenchbench_benchmarks.FrenchBench_ARC_Challenge
+    params: {split_type: test}
+
+  - name: benchmarks.code.frenchbench_benchmarks.FrenchBench_NLI
+    params: {split_type: test}

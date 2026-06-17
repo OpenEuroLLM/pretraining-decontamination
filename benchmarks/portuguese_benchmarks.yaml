@@ -32,3 +32,44 @@ tasks:
 
   - name: benchmarks.code.multilingual_benchmarks.GlobalMMLU_Full
     params: {lang: pt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.OneRuler
+    params: {lang: pt}
+  - name: benchmarks.code.multilingual_benchmarks.ArcChallengeMt
+    params: {lang: pt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.HellaSwagMt
+    params: {lang: pt, split_type: validation}
+
+  - name: benchmarks.code.multilingual_benchmarks.Xcsqa
+    params: {lang: pt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
+    params: {lang: pt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Sib200
+    params: {lang: pt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.MMLUProX
+    params: {lang: pt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.WikiAnn
+    params: {lang: pt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.mDollyMT
+    params: {lang: pt}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v2
+    params: {lang: pt}
+
+  - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
+    params: {lang: pt}
+
+  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+    params: {lang: pt, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Menlo
+    params: {lang: pt, split_type: train}
+
+  - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
+    params: {lang: pt}

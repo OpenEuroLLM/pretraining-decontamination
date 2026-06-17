@@ -2,3 +2,15 @@ tasks:
   
   - name: benchmarks.code.multilingual_benchmarks.Flores200
     params: {lang: bs, split_type: devtest}
+
+  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
+    params: {lang: bs, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.Sib200
+    params: {lang: bs, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.WikiAnn
+    params: {lang: bs, split_type: test}
+
+  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+    params: {lang: bs, split_type: test}
