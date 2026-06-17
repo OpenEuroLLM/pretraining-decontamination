@@ -1,4 +1,0 @@
-/data/olmo-mix-1124/source/arxiv/arxiv-train-0000.json.gz
-/data/olmo-mix-1124/source/arxiv/arxiv-train-0001.json.gz
-/data/olmo-mix-1124/source/arxiv/arxiv-train-0002.json.gz
-/data/olmo-mix-1124/source/arxiv/arxiv-train-0003.json.gz

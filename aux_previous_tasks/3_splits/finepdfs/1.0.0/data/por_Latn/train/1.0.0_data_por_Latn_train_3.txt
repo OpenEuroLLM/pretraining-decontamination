@@ -1,1 +1,0 @@
-/data/finepdfs/1.0.0/data/por_Latn/train/000_00024.jsonl.zst

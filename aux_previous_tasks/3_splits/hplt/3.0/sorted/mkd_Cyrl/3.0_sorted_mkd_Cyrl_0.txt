@@ -1,2 +1,0 @@
-/data/hplt/3.0/sorted/mkd_Cyrl/10_1.jsonl.zst
-/data/hplt/3.0/sorted/mkd_Cyrl/5_1.jsonl.zst

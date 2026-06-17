@@ -1,4 +1,0 @@
-/data/finemath-0.0.0/uuid/finemath-4plus/train-00060-of-00064.jsonl.zst
-/data/finemath-0.0.0/uuid/finemath-4plus/train-00061-of-00064.jsonl.zst
-/data/finemath-0.0.0/uuid/finemath-4plus/train-00062-of-00064.jsonl.zst
-/data/finemath-0.0.0/uuid/finemath-4plus/train-00063-of-00064.jsonl.zst

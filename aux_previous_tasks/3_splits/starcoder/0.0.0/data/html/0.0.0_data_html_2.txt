@@ -1,9 +1,0 @@
-/data/starcoder/0.0.0/data/html/train-00020-of-00029.jsonl.zst
-/data/starcoder/0.0.0/data/html/train-00021-of-00029.jsonl.zst
-/data/starcoder/0.0.0/data/html/train-00022-of-00029.jsonl.zst
-/data/starcoder/0.0.0/data/html/train-00023-of-00029.jsonl.zst
-/data/starcoder/0.0.0/data/html/train-00024-of-00029.jsonl.zst
-/data/starcoder/0.0.0/data/html/train-00025-of-00029.jsonl.zst
-/data/starcoder/0.0.0/data/html/train-00026-of-00029.jsonl.zst
-/data/starcoder/0.0.0/data/html/train-00027-of-00029.jsonl.zst
-/data/starcoder/0.0.0/data/html/train-00028-of-00029.jsonl.zst

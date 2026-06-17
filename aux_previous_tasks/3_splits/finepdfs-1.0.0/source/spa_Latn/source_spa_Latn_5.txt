@@ -1,4 +1,0 @@
-/data/finepdfs-1.0.0/source/spa_Latn/000_00020.jsonl.zst
-/data/finepdfs-1.0.0/source/spa_Latn/000_00021.jsonl.zst
-/data/finepdfs-1.0.0/source/spa_Latn/000_00022.jsonl.zst
-/data/finepdfs-1.0.0/source/spa_Latn/000_00023.jsonl.zst

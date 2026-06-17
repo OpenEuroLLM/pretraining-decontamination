@@ -1,5 +1,0 @@
-finepdfs-edu:
-  dataset_path: finepdfs
-  chunk_size: 6
-  directories:
-    - "1.0.0/edu/{lang}/train"

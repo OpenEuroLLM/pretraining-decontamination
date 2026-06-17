@@ -1,2 +1,0 @@
-/data/hplt/3.0/sorted/kat_Geor/10_1.jsonl.zst
-/data/hplt/3.0/sorted/kat_Geor/5_1.jsonl.zst

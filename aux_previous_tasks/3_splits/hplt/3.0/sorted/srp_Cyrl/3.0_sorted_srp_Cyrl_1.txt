@@ -1,2 +1,0 @@
-/data/hplt/3.0/sorted/srp_Cyrl/6_1.jsonl.zst
-/data/hplt/3.0/sorted/srp_Cyrl/7_1.jsonl.zst

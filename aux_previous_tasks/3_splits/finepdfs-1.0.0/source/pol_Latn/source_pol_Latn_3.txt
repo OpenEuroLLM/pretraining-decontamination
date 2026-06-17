@@ -1,3 +1,0 @@
-/data/finepdfs-1.0.0/source/pol_Latn/000_00012.jsonl.zst
-/data/finepdfs-1.0.0/source/pol_Latn/000_00013.jsonl.zst
-/data/finepdfs-1.0.0/source/pol_Latn/000_00014.jsonl.zst

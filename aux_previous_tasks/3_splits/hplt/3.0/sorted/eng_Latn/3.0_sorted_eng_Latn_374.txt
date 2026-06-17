@@ -1,2 +1,0 @@
-/data/hplt/3.0/sorted/eng_Latn/8_349.jsonl.zst
-/data/hplt/3.0/sorted/eng_Latn/8_35.jsonl.zst

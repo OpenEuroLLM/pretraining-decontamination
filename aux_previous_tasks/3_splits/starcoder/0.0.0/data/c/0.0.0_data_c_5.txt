@@ -1,3 +1,0 @@
-/data/starcoder/0.0.0/data/c/train-00050-of-00053.jsonl.zst
-/data/starcoder/0.0.0/data/c/train-00051-of-00053.jsonl.zst
-/data/starcoder/0.0.0/data/c/train-00052-of-00053.jsonl.zst

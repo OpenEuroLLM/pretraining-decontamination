@@ -1,7 +1,0 @@
-
-finemath:
-  dataset_path: finemath-0.0.0
-  lang: eng_Latn
-  chunk_size: 10
-  directories:
-    - "uuid/finemath-4plus"

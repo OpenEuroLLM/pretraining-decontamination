@@ -1,8 +1,0 @@
-/data/finepdfs/1.0.0/data/eng_Latn/train/001_00044.jsonl.zst
-/data/finepdfs/1.0.0/data/eng_Latn/train/001_00045.jsonl.zst
-/data/finepdfs/1.0.0/data/eng_Latn/train/001_00046.jsonl.zst
-/data/finepdfs/1.0.0/data/eng_Latn/train/001_00047.jsonl.zst
-/data/finepdfs/1.0.0/data/eng_Latn/train/001_00048.jsonl.zst
-/data/finepdfs/1.0.0/data/eng_Latn/train/001_00049.jsonl.zst
-/data/finepdfs/1.0.0/data/eng_Latn/train/001_00050.jsonl.zst
-/data/finepdfs/1.0.0/data/eng_Latn/train/001_00051.jsonl.zst

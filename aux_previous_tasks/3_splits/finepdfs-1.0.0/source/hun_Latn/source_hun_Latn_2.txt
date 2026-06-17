@@ -1,2 +1,0 @@
-/data/finepdfs-1.0.0/source/hun_Latn/000_00008.jsonl.zst
-/data/finepdfs-1.0.0/source/hun_Latn/000_00009.jsonl.zst

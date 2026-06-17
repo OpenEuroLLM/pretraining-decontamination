@@ -1,5 +1,0 @@
-/data/starcoder/0.0.0/data/javascript/train-00060-of-00065.jsonl.zst
-/data/starcoder/0.0.0/data/javascript/train-00061-of-00065.jsonl.zst
-/data/starcoder/0.0.0/data/javascript/train-00062-of-00065.jsonl.zst
-/data/starcoder/0.0.0/data/javascript/train-00063-of-00065.jsonl.zst
-/data/starcoder/0.0.0/data/javascript/train-00064-of-00065.jsonl.zst

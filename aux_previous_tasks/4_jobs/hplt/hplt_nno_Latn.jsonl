@@ -1,3 +1,0 @@
-{"dataset_name":"hplt/nno_Latn","name":"hplt_3.0_sorted_nno_Latn_0","status":"COMPLETED","path":"3_splits/hplt/3.0/sorted/nno_Latn/3.0_sorted_nno_Latn_0.txt","job_id":"15797797_1","task_benchmark_ngrams":"1_task_ngrams/norwegian_benchmarks.pkl"}
-{"dataset_name":"hplt/nno_Latn","name":"hplt_3.0_sorted_nno_Latn_1","status":"COMPLETED","path":"3_splits/hplt/3.0/sorted/nno_Latn/3.0_sorted_nno_Latn_1.txt","job_id":"15797797_2","task_benchmark_ngrams":"1_task_ngrams/norwegian_benchmarks.pkl"}
-{"dataset_name":"hplt/nno_Latn","name":"hplt_3.0_sorted_nno_Latn_2","status":"COMPLETED","path":"3_splits/hplt/3.0/sorted/nno_Latn/3.0_sorted_nno_Latn_2.txt","job_id":"15797797_3","task_benchmark_ngrams":"1_task_ngrams/norwegian_benchmarks.pkl"}
