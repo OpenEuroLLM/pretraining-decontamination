@@ -27,7 +27,7 @@ srun /usr/bin/time -v singularity exec \
     --bind $OUTPUT_MATCHED_NGRAMS_DIR:/matched_ngrams_dir \
     --bind $TMP_DIR:/tmp_nemo \
     --bind $DATASETS_DIR:/data \
-    nemo.sif \
+    /scratch/project_465002530/training/collection/flag/nemo-curator/nemo.sif \
     python3 find_matching_ngrams.py \
     --input-data-file=$INPUT_FILE_TXT \
     --input-task-ngrams $INPUT_TASK_NGRAMS \

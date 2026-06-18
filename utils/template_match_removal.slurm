@@ -32,7 +32,7 @@ srun /usr/bin/time -v singularity exec \
     --bind $TMP_DIR:/tmp_nemo \
     --bind $DATASETS_DIR:/data \
     --bind $OUTPUT_DIR:/removed \
-    nemo.sif \
+    /scratch/project_465002530/training/collection/flag/nemo-curator/nemo.sif \
     python3 remove_matching_ngrams_parallel.py \
     --input-data-file $INPUT_FILE_TXT \
     --input-matched-ngrams /matched_ngrams/all_matched_ngrams.pkl \

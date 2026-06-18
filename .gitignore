@@ -6,3 +6,6 @@ __pycache__
 *.pkl
 benchmarks/data/harmbench/
 benchmarks/data/wikitext/
+2_datasets/
+3_splits/
+4_jobs/
