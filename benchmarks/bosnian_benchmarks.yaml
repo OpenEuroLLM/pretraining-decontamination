@@ -12,5 +12,5 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.WikiAnn
     params: {lang: bs, split_type: test}
 
-  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
-    params: {lang: bs, split_type: test}
+  # - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+  #   params: {lang: bs, split_type: test}

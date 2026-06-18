@@ -169,6 +169,7 @@ class FinnishBench_SIB_200(DownstreamTask):
 
 
 ## PROBLEM, IDK WTF TO DO WITH THIS ONE, I THINK I WONT INCLUDE IT
+## ONLY WORDS IN THE DATASET
 class FinnishBench_FBV1_Stripped(DownstreamTask):
     def __init__(self, min_ngram_size=8, max_ngram_size=13, split_type=None):
         super().__init__()
@@ -177,6 +178,14 @@ class FinnishBench_FBV1_Stripped(DownstreamTask):
         self._max_ngram_size = max_ngram_size
         self._dataset = load_dataset(
             "TurkuNLP/finbenchv2-fbv1-stripped-fi-ht", split=split_type
+        )
+
+        configs = get_dataset_config_names("TurkuNLP/finbenchv2-fbv1-stripped-fi-ht")
+        self._dataset = concatenate_datasets(
+            [
+                load_dataset("TurkuNLP/finbenchv2-fbv1-stripped-fi-ht", c, split=split_type)
+                for c in configs
+            ]
         )
 
     def generate_ngrams(self):

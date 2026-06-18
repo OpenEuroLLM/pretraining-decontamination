@@ -68,8 +68,8 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.MultiJail
     params: {lang: it}
 
-  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
-    params: {lang: it, split_type: test}
+  # - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+  #   params: {lang: it, split_type: test}
 
   - name: benchmarks.code.multilingual_benchmarks.Menlo
     params: {lang: it, split_type: train}

@@ -1910,7 +1910,7 @@ class WinogradSchemaChallenge(DownstreamTask):
         self._task_name = "winograd_schema"
         self._min_ngram_size = min_ngram_size
         self._max_ngram_size = max_ngram_size
-        self._dataset = load_dataset("winograd_wsc", "wsc273", split=split_type)
+        self._dataset = load_dataset("ErnestSDavis/winograd_wsc", "wsc273", split=split_type, trust_remote_code=True)
 
     def generate_ngrams(self):
         for idx, line in enumerate(self._dataset):

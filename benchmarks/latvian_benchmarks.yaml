@@ -9,9 +9,6 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.ArcChallengeMt
     params: {lang: lv, split_type: test}
 
-  - name: benchmarks.code.multilingual_benchmarks.GlobalPiqa
-    params: {lang: lv, split_type: test}
-
   - name: benchmarks.code.multilingual_benchmarks.Sib200
     params: {lang: lv, split_type: test}
 
@@ -24,8 +21,8 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
     params: {lang: lv}
 
-  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
-    params: {lang: lv, split_type: test}
+  # - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+  #   params: {lang: lv, split_type: test}
 
   - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
     params: {lang: lv}

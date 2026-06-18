@@ -9,9 +9,6 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.Flores200
     params: {lang: nob, split_type: devtest}
 
-  - name: benchmarks.code.multilingual_benchmarks.OneRuler
-    params: {lang: no}
-
   - name: benchmarks.code.multilingual_benchmarks.ArcChallengeMt
     params: {lang: nb, split_type: test}
 
@@ -22,22 +19,22 @@ tasks:
     params: {lang: nb, split_type: test}
 
   - name: benchmarks.code.multilingual_benchmarks.WikiAnn
-    params: {lang: no, split_type: test}
+    params: {lang: "no", split_type: test}
 
   - name: benchmarks.code.multilingual_benchmarks.mDollyMT
-    params: {lang: no}
+    params: {lang: "no"}
 
   - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
-    params: {lang: no}
+    params: {lang: "no"}
 
-  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
-    params: {lang: no, split_type: test}
+  # - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+  #   params: {lang: "no", split_type: test}
 
-  - name: benchmarks.code.noreval_benchmarks.NorEcSentence
-    params: {split_type: test}
+  # - name: benchmarks.code.noreval_benchmarks.NorEcSentence
+  #   params: {split_type: test}
 
-  - name: benchmarks.code.noreval_benchmarks.NorEcDocument
-    params: {split_type: test}
+  # - name: benchmarks.code.noreval_benchmarks.NorEcDocument
+  #   params: {split_type: test}
 
   - name: benchmarks.code.noreval_benchmarks.NCB
     params: {split_type: train}
@@ -84,5 +81,7 @@ tasks:
   - name: benchmarks.code.noreval_benchmarks.NorSummarizeInstruct
     params: {split_type: test}
 
-  - name: benchmarks.code.noreval_benchmarks.
-    params: {split_type: test}
+  # - name: benchmarks.code.multilingual_benchmarks.OneRuler
+  #   params: {lang: "no"}
+  
+  

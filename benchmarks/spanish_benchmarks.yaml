@@ -97,8 +97,8 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.AyaRedTeaming
     params: {lang: es}
 
-  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
-    params: {lang: es, split_type: test}
+  # - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+  #   params: {lang: es, split_type: test}
 
   - name: benchmarks.code.multilingual_benchmarks.Menlo
     params: {lang: es, split_type: train}

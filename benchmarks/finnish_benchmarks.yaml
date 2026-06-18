@@ -39,8 +39,8 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
     params: {lang: fi}
 
-  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
-    params: {lang: fi, split_type: test}
+  # - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+  #   params: {lang: fi, split_type: test}
 
   - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
     params: {lang: fi}
@@ -60,11 +60,11 @@ tasks:
   - name: benchmarks.code.finbench_benchmarks.FinnishBench_Scandisent
     params: {split_type: test}
 
-  - name: benchmarks.code.finbench_benchmarks.FinnishBench_Squad_Strip
-    params: {split_type: validation}
+  # - name: benchmarks.code.finbench_benchmarks.FinnishBench_Squad_Strip
+  #   params: {split_type: validation}
 
   - name: benchmarks.code.finbench_benchmarks.FinnishBench_SIB_200
     params: {split_type: test}
 
-  - name: benchmarks.code.finbench_benchmarks.FinnishBench_FBV1_Stripped
-    params: {split_type: default}
+  # - name: benchmarks.code.finbench_benchmarks.FinnishBench_FBV1_Stripped
+  #   params: {split_type: default}

@@ -29,8 +29,8 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
     params: {lang: bg}
 
-  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
-    params: {lang: bg, split_type: test}
+  # - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+  #   params: {lang: bg, split_type: test}
 
   - name: benchmarks.code.multilingual_benchmarks.Menlo
     params: {lang: bg, split_type: train}

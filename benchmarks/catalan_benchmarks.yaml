@@ -92,8 +92,8 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
     params: {lang: ca}
 
-  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
-    params: {lang: ca, split_type: test}
+  # - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+  #   params: {lang: ca, split_type: test}
 
   - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
     params: {lang: ca}

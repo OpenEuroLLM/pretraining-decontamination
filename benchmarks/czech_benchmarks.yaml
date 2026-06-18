@@ -51,8 +51,8 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.mAIME2025
     params: {lang: cs}
 
-  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
-    params: {lang: cs, split_type: test}
+  # - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+  #   params: {lang: cs, split_type: test}
 
   - name: benchmarks.code.multilingual_benchmarks.Menlo
     params: {lang: cs, split_type: train}

@@ -37,8 +37,8 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
     params: {lang: lt}
 
-  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
-    params: {lang: lt, split_type: test}
+  # - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+  #   params: {lang: lt, split_type: test}
 
   - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
     params: {lang: lt}

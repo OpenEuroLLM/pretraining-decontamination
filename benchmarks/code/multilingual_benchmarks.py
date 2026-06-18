@@ -757,16 +757,30 @@ class Xcsqa(DownstreamTask):
 
 
 class GlobalPiqa(DownstreamTask):
-    def __init__(self, min_ngram_size=8, max_ngram_size=13, lang=None):
+    def __init__(self, min_ngram_size=8, max_ngram_size=13, lang=None, split_type=None):
         super().__init__()
 
-        lang_pt3 = iso639.Lang(lang).pt3
-        self._lang = lang_pt3
-        self._script = langs_script[
-            self._lang
-        ].lower()  # globalpiqa uses lowercase script names
+        std_pt3 = iso639.Lang(lang).pt3
+        self._script = langs_script[std_pt3].lower()  # globalpiqa uses lowercase script names
+
+        lang_overrides = {
+            "est": "ekk",  # Standard Estonian
+            "lav": "lvs",  # Standard Latvian
+            "sqi": "als",  # Tosk Albanian
+        }
+
+        self._lang = lang_overrides.get(std_pt3, std_pt3)
         self._full_lang = f"{self._lang}_{self._script}"
+
+        if "fra" in self._full_lang:
+            self._full_lang += "_fran"
+        elif "por" in self._full_lang:
+            self._full_lang += "_port"
+        elif "spa" in self._full_lang:
+            self._full_lang += "_spai"
+
         self._task_name = "global_piqa_" + self._full_lang
+
         if self._full_lang not in langs_global_piqa:
             raise Exception("Language not available")
 
@@ -962,7 +976,11 @@ class TatoebaChallenge(DownstreamTask):
         self._task_name = "tatoeba_challenge"
         self._min_ngram_size = min_ngram_size
         self._max_ngram_size = max_ngram_size
-        self._lang = iso639.Lang(lang).pt3
+
+        if lang == "srp_Latn" or lang == "srp_Cyrl":
+            self._lang = lang
+        else:
+            self._lang = iso639.Lang(lang).pt3
 
         if self._lang not in langs_tatoebamt:
             raise Exception("Language not available")
@@ -1022,7 +1040,13 @@ class DocLevelMT(DownstreamTask):
 class Sib200(DownstreamTask):
     def __init__(self, min_ngram_size=8, max_ngram_size=13, lang=None, split_type=None):
         super().__init__()
-        lang_pt3 = iso639.Lang(lang).pt3
+
+        if lang == "sq":
+            lang_pt3 = "als"
+        elif lang == "lv":
+            lang_pt3 = "lvs"
+        else:
+            lang_pt3 = iso639.Lang(lang).pt3
         self._lang = lang_pt3
         self._script = langs_script[self._lang]
         self._full_lang = f"{self._lang}_{self._script}"
@@ -1188,8 +1212,10 @@ class WikiAnn(DownstreamTask):
     # TODO: Recheck this
     def __init__(self, min_ngram_size=8, max_ngram_size=13, lang=None, split_type=None):
         super().__init__()
-        if lang not in langs_wikiann:
-            raise Exception("Language not available")
+        if lang != "no":
+            if lang not in langs_wikiann:
+                raise Exception("Language not available")
+        
         self._task_name = "wikiann"
         self._min_ngram_size = min_ngram_size
         self._max_ngram_size = max_ngram_size
@@ -1294,7 +1320,12 @@ class AyaEvaluationSuite(DownstreamTask):
                 for c in configs
             ]
         )
-        self._lang = iso639.Lang(lang).pt3
+
+        if lang == "lv":
+            self._lang = "lvs"
+        else:
+            self._lang = iso639.Lang(lang).pt3
+        
         if self._lang not in langs_aya_evaluation_suite:
             raise Exception("Language not available")
 

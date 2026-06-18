@@ -6,8 +6,9 @@ tasks:
   - name: benchmarks.code.galicianbench_benchmarks.GalicianBench_Belebele
     params: {split_type: train}
 
-  - name: benchmarks.code.galicianbench_benchmarks.GalicianBench_Galcola
-    params: {split_type: test}
+  # This one failed during the current iteration, because of broken link.
+  #- name: benchmarks.code.galicianbench_benchmarks.GalicianBench_Galcola
+  #  params: {split_type: test}
 
   - name: benchmarks.code.galicianbench_benchmarks.GalicianBench_MGSM
     params: {split_type: test}
@@ -54,8 +55,8 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.mArenaHard_v21
     params: {lang: gl}
 
-  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
-    params: {lang: gl, split_type: test}
+  # - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+  #   params: {lang: gl, split_type: test}
 
   - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
     params: {lang: gl}

@@ -239,7 +239,7 @@ langs_oneruler:
   - ja
   - ko
   - nl
-  - no
+  - "no"
   - pl
   - pt
   - ru
@@ -409,7 +409,7 @@ langs_wikiann:
   - mk
   - mt
   - nl
-  - no
+  - "no"
   - pl
   - pt
   - ro
@@ -443,7 +443,7 @@ langs_m_dolly_mt:
   - lv
   - mt
   - nl
-  - no
+  - "no"
   - pl
   - pt
   - ro

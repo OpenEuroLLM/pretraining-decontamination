@@ -110,7 +110,7 @@ class SpanishBench_XLSUM(DownstreamTask):
         self._task_name = "xlsum_es"
         self._min_ngram_size = min_ngram_size
         self._max_ngram_size = max_ngram_size
-        self._dataset = load_dataset("csebuetnlp/xlsum", "spanish", split=split_type)
+        self._dataset = load_dataset("csebuetnlp/xlsum", "spanish", split=split_type, trust_remote_code=True)
 
     def generate_ngrams(self):
         # https://github.com/EleutherAI/lm-evaluation-harness/blob/main/lm_eval/tasks/spanish_bench/utils.py
@@ -153,7 +153,7 @@ class SpanishBench_XQUAD(DownstreamTask):
         self._task_name = "xquad_es"
         self._min_ngram_size = min_ngram_size
         self._max_ngram_size = max_ngram_size
-        self._dataset = load_dataset("xquad", f"xquad.es", split=split_type)
+        self._dataset = load_dataset("google/xquad", f"xquad.es", split=split_type)
 
     def generate_ngrams(self):
         for idx, line in enumerate(self._dataset):

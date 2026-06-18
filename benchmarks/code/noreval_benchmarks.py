@@ -67,12 +67,13 @@ class NCB(DownstreamTask):
         self,
         min_ngram_size=8,
         max_ngram_size=13,
+        split_type=None,
     ):
         super().__init__()
         self._task_name = "NCB"
         self._min_ngram_size = min_ngram_size
         self._max_ngram_size = max_ngram_size
-        self._dataset = load_dataset("hcfa/ncb", split="train")
+        self._dataset = load_dataset("hcfa/ncb", split=split_type)
 
     def generate_ngrams(self):
         for idx, line in enumerate(self._dataset):
@@ -91,17 +92,18 @@ class NorIdiom(DownstreamTask):
         self,
         min_ngram_size=8,
         max_ngram_size=13,
+        split_type=None,
     ):
         super().__init__()
         self._task_name = "NorIdiom"
         self._min_ngram_size = min_ngram_size
         self._max_ngram_size = max_ngram_size
         self._datasets = [
-            load_dataset("Sprakbanken/Norwegian_idioms", "default", split="train"),
+            load_dataset("Sprakbanken/Norwegian_idioms", "default", split=split_type),
             load_dataset(
                 "Sprakbanken/Norwegian_idioms",
                 "include_translated_idioms",
-                split="train",
+                split=split_type,
             ),
         ]
 
@@ -142,15 +144,15 @@ class NorBelebele(DownstreamTask):
 
 
 class NRKQuizQA(DownstreamTask):
-    def __init__(self, min_ngram_size=8, max_ngram_size=13):
+    def __init__(self, min_ngram_size=8, max_ngram_size=13, split_type=None):
         super().__init__()
         self._task_name = "nrk_quiz_qa"
         self._min_ngram_size = min_ngram_size
         self._max_ngram_size = max_ngram_size
         self._dataset = concatenate_datasets(
             [
-                load_dataset("ltg/nrk_quiz_qa", "nb", split="test"),
-                load_dataset("ltg/nrk_quiz_qa", "nn", split="test"),
+                load_dataset("ltg/nrk_quiz_qa", "nb", split=split_type),
+                load_dataset("ltg/nrk_quiz_qa", "nn", split=split_type),
             ]
         )
 

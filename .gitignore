@@ -2,3 +2,7 @@ logs/
 threshold_logs/
 nemo.sif
 __pycache__
+1_task_grams/
+*.pkl
+benchmarks/data/harmbench/
+benchmarks/data/wikitext/

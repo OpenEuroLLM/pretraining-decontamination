@@ -45,8 +45,11 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.AyaRedTeaming
     params: {lang: sr}
 
-  - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
-    params: {lang: sr, split_type: test}
+  # - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+  #   params: {lang: srp_Latn, split_type: test}
+
+  # - name: benchmarks.code.multilingual_benchmarks.TatoebaChallenge
+  #   params: {lang: srp_Cyrl, split_type: test}
 
   - name: benchmarks.code.multilingual_benchmarks.AyaEvaluationSuite
     params: {lang: sr}

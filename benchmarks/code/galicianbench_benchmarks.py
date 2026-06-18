@@ -84,10 +84,10 @@ class GalicianBench_Parafrases(DownstreamTask):
         self._task_name = "parafrases_gl"
         self._min_ngram_size = min_ngram_size
         self._max_ngram_size = max_ngram_size
-        self._dataset = load_dataset("proxectonos/parafrases_gl", split=split_type)
+        self._dataset = load_dataset("proxectonos/parafrases_gl", data_files={"test": "test.tsv"}, delimiter="\t")
 
     def generate_ngrams(self):
-        for idx, line in enumerate(self._dataset):
+        for idx, line in enumerate(self._dataset["test"]):
             try:
                 frase = line["Frase"]
                 self._update_ngrams(frase, self._min_ngram_size, self._max_ngram_size)
@@ -130,10 +130,9 @@ class GalicianBench_Summarization(DownstreamTask):
         self._task_name = "summarization_gl"
         self._min_ngram_size = min_ngram_size
         self._max_ngram_size = max_ngram_size
-        self._dataset = load_dataset("proxectonos/summarization_gl", split=split_type)
-
+        self._dataset = load_dataset("proxectonos/summarization_gl", data_files={"test": "test.jsonl"})
     def generate_ngrams(self):
-        for idx, line in enumerate(self._dataset):
+        for idx, line in enumerate(self._dataset["test"]):
             try:
                 text = line["text"]
                 self._update_ngrams(text, self._min_ngram_size, self._max_ngram_size)
@@ -194,7 +193,7 @@ class GalicianBench_XStoryCloze(DownstreamTask):
         self._task_name = "xstorycloze_gl"
         self._min_ngram_size = min_ngram_size
         self._max_ngram_size = max_ngram_size
-        self._dataset = load_dataset("proxectonos/xstorycloze_gl", split=split_type)
+        self._dataset = load_dataset("proxectonos/xstorycloze_gl", data_files={"test": "XStoryCloze_test_gl.tsv"}, delimiter="\t")
 
     def generate_ngrams(self):
         for idx, line in enumerate(self._dataset):
