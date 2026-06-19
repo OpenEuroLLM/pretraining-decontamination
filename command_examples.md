@@ -1,9 +1,13 @@
 ## Relevant paths
+
 ### Original training catalogue
 /appl/local/openeurollm/training/catalogue
 
 ### Baby training catalogue
 /scratch/project_465002530/training/collection/baby
+
+### Flag training catalogue
+/scratch/project_465002530/training/collection/flag
 
 ### Log paths to matching and removal steps per dataset and language
 /scratch/project_462000963/users/tudormateiu/decontamination/{DATASET}/{LANG}/logs/{DECONT_STEP}
