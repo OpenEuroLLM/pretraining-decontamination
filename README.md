@@ -3,6 +3,7 @@
 
 Recommended work folder is your home directory in Lumi, using this repo in, for example, `scratch` will throw Singularity bind errors.
 
+
 ### 1.1. Variables setup
 Prior to running any commands, modify the `env_variables.yaml` file and update the following variables to reflect your own configuration:
 
@@ -22,16 +23,37 @@ This step should only be performed once, unless the username or compute project 
 
 ### 1.2. Singularity image
 
-This pipeline makes use of a custom Singularity image containing a modified version of NemoCurator. For convenience, the Singularity image may be copied directly from the following Lumi path into your root directory of this repository:
+This pipeline makes use of a custom Singularity image containing a modified version of NemoCurator. For convenience, the Singularity image has been copied directly to the flag training collection folder on Lumi:
 
-`/scratch/project_465002530/users/tudormateiu/decontamination/pretraining-decontamination/nemo.sif`
+```
+/scratch/project_465002530/training/collection/flag/nemo-curator/nemo.sif
+```
+
+There is no need to copy or edit it, the image path has been integrated into the pipeline.
 
 ### 1.3. Indexed benchmark generated n-grams
 
-To save compute, the generated benchmark n-grams have already been indexed and prepared in the NemoCurator input format. They can be found and copied from:
+To save compute, the generated benchmark n-grams have already been indexed and prepared in the NemoCurator input format. They can be found in the flag training collection folder on Lumi:
 
 ```
-/users/tudormateiu/decontamination/pretraining-decontamination/1_task_ngrams
+/scratch/project_465002530/training/collection/flag/nemo-curator/task_ngrams
+```
+
+There is no need to copy them, their path has been integrated into the pipeline.
+
+### 1.4. Personal Python virtual environment
+
+You must create a Python 3.11.7 virtual environment in your work folder and activate it when submitting jobs and running any of the utility functions.
+
+```
+module load cray-python
+
+python3 -m venv your_venv_path
+
+source your_venv_path/bin/activate
+
+pip install -U pip
+pip install polars iso639-lang loguru pyyaml zstandard datasets
 ```
 
 ## 2. Task preparation
