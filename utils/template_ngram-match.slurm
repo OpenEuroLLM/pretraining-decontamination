@@ -24,6 +24,7 @@ INPUT_TASK_NGRAMS=$(echo "$line" | jq -r ".task_benchmark_ngrams")
 
 srun /usr/bin/time -v singularity exec \
     --bind /appl/local/openeurollm/training/catalogue:/appl/local/openeurollm/training/catalogue \
+    --bind /scratch/project_465002530:/scratch/project_465002530 \
     --bind $OUTPUT_MATCHED_NGRAMS_DIR:/matched_ngrams_dir \
     --bind $TMP_DIR:/tmp_nemo \
     --bind $DATASETS_DIR:/data \

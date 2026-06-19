@@ -9,3 +9,5 @@ benchmarks/data/wikitext/
 2_datasets/
 3_splits/
 4_jobs/
+fast_script_caller.sh
+fast_sbatch_script_caller.sbatch

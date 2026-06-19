@@ -55,7 +55,7 @@ def generate_jobs(datasets_file, input_dir, output_dir):
                             "status": "NOT_STARTED",
                             "path": str(Path(files_dir, file_path)),
                             "job_id": None,
-                            "task_benchmark_ngrams": f"1_task_ngrams/{full_language_name}_benchmarks.pkl",
+                            "task_benchmark_ngrams": f"/scratch/project_465002530/training/collection/flag/nemo-curator/task_ngrams/{full_language_name}_benchmarks.pkl",
                             "metadata_path": f"/data/{metadata_path}" if metadata_path else None,
                         }
                         json.dump(job, output_jobs)

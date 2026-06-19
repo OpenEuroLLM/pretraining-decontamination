@@ -28,6 +28,7 @@ OUTPUT_REMOVED="${OUTPUT_DIR}"
 
 srun /usr/bin/time -v singularity exec \
     --bind /appl/local/openeurollm/training/catalogue:/appl/local/openeurollm/training/catalogue \
+    --bind /scratch/project_465002530:/scratch/project_465002530 \
     --bind $INPUT_MATCHED_NGRAMS_DIR:/matched_ngrams \
     --bind $TMP_DIR:/tmp_nemo \
     --bind $DATASETS_DIR:/data \
