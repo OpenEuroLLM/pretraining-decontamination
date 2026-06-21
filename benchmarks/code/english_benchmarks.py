@@ -9,6 +9,15 @@ from nemo_curator.tasks.downstream_task import DownstreamTask
 
 from datasets import concatenate_datasets, get_dataset_config_names, load_dataset
 
+# put this at the top of your generation script, before instantiating any task
+import nemo_curator.tasks.downstream_task as _dt
+
+_orig = _dt.DownstreamTask._update_ngrams
+def _update_ngrams_normalized(self, text, min_ngram_size=8, max_ngram_size=13):
+    text = " ".join(text.split())
+    return _orig(self, text, min_ngram_size, max_ngram_size)
+_dt.DownstreamTask._update_ngrams = _update_ngrams_normalized
+
 
 class MMLU(DownstreamTask):
     def __init__(

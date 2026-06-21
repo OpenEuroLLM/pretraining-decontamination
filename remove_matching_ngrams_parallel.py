@@ -40,6 +40,7 @@ def batch_list(lst, batch_size=50):
         yield lst[i:i + batch_size]
 
 logging.basicConfig(level=logging.DEBUG)
+logging.getLogger("PIL").setLevel(logging.WARNING)
 
 def main(args: argparse.Namespace) -> None:
     client = get_client(**ArgumentHelper.parse_client_args(args))  # noqa: F841

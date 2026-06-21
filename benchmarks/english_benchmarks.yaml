@@ -113,8 +113,8 @@ tasks:
   # - name: benchmarks.code.english_benchmarks.LMArena140K
   #   params: {}
 
-  - name: benchmarks.code.english_benchmarks.LMArena55K
-    params: {}
+  # - name: benchmarks.code.english_benchmarks.LMArena55K
+  #   params: {}
 
   - name: benchmarks.code.english_benchmarks.HarmBench
     params: {file_dir: "benchmarks/data/harmbench"}
@@ -125,8 +125,8 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.Xcsqa
     params: {lang: en, split_type: test}
  
-  - name: benchmarks.code.multilingual_benchmarks.OpenSubtitles
-    params: {lang: en}
+  # - name: benchmarks.code.multilingual_benchmarks.OpenSubtitles
+  #   params: {lang: en}
 
   - name: benchmarks.code.multilingual_benchmarks.GlobalMGSM
     params: {lang: en}

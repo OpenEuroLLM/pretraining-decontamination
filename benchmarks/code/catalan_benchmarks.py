@@ -5,6 +5,14 @@ import logging
 import os
 from benchmarks.code.utils import general_detokenize
 
+# put this at the top of your generation script, before instantiating any task
+import nemo_curator.tasks.downstream_task as _dt
+
+_orig = _dt.DownstreamTask._update_ngrams
+def _update_ngrams_normalized(self, text, min_ngram_size=8, max_ngram_size=13):
+    text = " ".join(text.split())
+    return _orig(self, text, min_ngram_size, max_ngram_size)
+_dt.DownstreamTask._update_ngrams = _update_ngrams_normalized
 
 class CatalanBench_ArcEasy(DownstreamTask):
     def __init__(self, min_ngram_size=8, max_ngram_size=13, split_type=None):

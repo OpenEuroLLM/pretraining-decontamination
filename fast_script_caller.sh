@@ -2,13 +2,13 @@
 
 
 # Change dataset name and uncomment only languages supported by dataset
-DATASET="finepdfs-1.0.0"
+DATASET="nemotron-cc-1.0"
 LANGS=(
   # "bul_Cyrl"
-  "cat_Latn"
+  # "cat_Latn"
   # "ces_Latn"
   # "dan_Latn"
-  "deu_Latn"
+  # "deu_Latn"
   # "ell_Grek"
   "eng_Latn"
   # "est_Latn"
@@ -30,7 +30,7 @@ LANGS=(
   # "ron_Latn"
   # "slk_Latn"
   # "slv_Latn"
-  "spa_Latn"
+  # "spa_Latn"
   # "swe_Latn"
   # "bos_Cyrl"
   # "bos_Latn"
@@ -57,7 +57,7 @@ for LANG in "${LANGS[@]}"; do
     echo "[${IDX}/${TOTAL}] Processing LANG=${LANG} DATASET=${DATASET}"
 
     ### Uncomment this line to update the status of all types of jobs per language
-    # python3 utils/status.py --shards-jsonl "4_jobs/$DATASET/${DATASET}_${LANG}.jsonl"
+    python3 utils/status.py --shards-jsonl "4_jobs/$DATASET/${DATASET}_${LANG}.jsonl"
 
     ### Uncomment this line to run the concatenation of matched n-grams after ALL matching jobs have completed
     # python3 combine_matched_ngrams.py --dataset ${DATASET} --lang ${LANG}

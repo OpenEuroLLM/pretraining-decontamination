@@ -10,7 +10,7 @@ import logging
 from utils_nemo import get_all_files_from_text, decompress_files, delete_decompressed_files
 from pathlib import Path
 logging.basicConfig(level=logging.DEBUG)
-
+logging.getLogger("PIL").setLevel(logging.WARNING)
 
 def main(args: argparse.Namespace) -> None:
 
