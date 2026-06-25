@@ -1,0 +1,238 @@
+import argparse
+import json
+import os
+import subprocess
+import sys
+import time
+from collections import Counter
+
+from loguru import logger
+
+# Field in each jsonl line holding the job status.
+STATUS_FIELD = "status"
+# Jobs in these states occupy a queue slot.
+ACTIVE_STATES = {"RUNNING", "PENDING"}
+# Pool of jobs the submitter can still draw from.
+SUBMITTABLE_STATE = "NOT_STARTED"
+
+LOG_FORMAT = "{time:YYYY-MM-DD HH:mm:ss} | {level: <7} | {message}"
+
+
+def parse_args():
+    p = argparse.ArgumentParser(
+        description="Drip-feed SLURM array jobs, keeping the queue topped up.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    # core 
+    p.add_argument("--shards-jsonl", required=True,
+                   help="Path to the shards jsonl (the source of truth for status).")
+    p.add_argument("--max-queue", type=int, default=200,
+                   help="Full queue size to keep filled (your --node-limit).")
+    p.add_argument("--chunk", "-X", type=int, default=50,
+                   help="How many NOT_STARTED jobs to submit per loop when there is room.")
+    p.add_argument("--poll-interval", type=int, default=1800,
+                   help="Seconds to sleep between status checks (default 30 min).")
+
+    # passthrough submitter params (match your manual command) 
+    p.add_argument("--account", required=True)
+    p.add_argument("--partition", default="small")
+    p.add_argument("--time-limit", default="6:00:00")
+    p.add_argument("--n-workers", type=int, default=12)
+    p.add_argument("--mem", default="448G")
+
+    # script locations / behaviour 
+    p.add_argument("--submitter", default="submitter_ngram_match_array.py")
+    p.add_argument("--status-script", default="utils/status.py")
+    p.add_argument("--python", default=sys.executable or "python3",
+                   help="Python interpreter used to run the sub-scripts.")
+    p.add_argument("--status-field", default=STATUS_FIELD,
+                   help="Name of the status field in each jsonl line "
+                        "(lets a future removal workflow use a different field).")
+    p.add_argument("--max-cycles", type=int, default=0,
+                   help="Stop after this many loop cycles (0 = run until nothing left to submit).")
+    p.add_argument("--no-initial-status", action="store_true",
+                   help="Skip the very first status.py update before the first fill.")
+
+    # logging 
+    p.add_argument("--workflow", default="matching",
+                   help="Label for what this run does (e.g. 'matching', 'removal'); "
+                        "used in the log file name.")
+    p.add_argument("--log-dir", default="logs/job_orchestrator",
+                   help="Directory where per-run log files are written.")
+    return p.parse_args()
+
+
+def count_statuses(path, status_field=STATUS_FIELD):
+    """Tally job statuses straight from the jsonl."""
+    counts = Counter()
+    total = 0
+    with open(path) as f:
+        for ln, line in enumerate(f, 1):
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                obj = json.loads(line)
+            except json.JSONDecodeError:
+                logger.warning(f"skipping unparseable jsonl line {ln}")
+                continue
+            status = str(obj.get(status_field, "")).strip().upper()
+            counts[status] += 1
+            total += 1
+    active = sum(counts.get(s, 0) for s in ACTIVE_STATES)
+    not_started = counts.get(SUBMITTABLE_STATE, 0)
+    done = total - active - not_started
+    return {"counts": counts, "total": total,
+            "active": active, "not_started": not_started, "done": done}
+
+
+def log_snapshot(snap):
+    breakdown = ", ".join(f"{k}={v}" for k, v in sorted(snap["counts"].items())) or "(empty)"
+    logger.info(f"jsonl: total={snap['total']} | active(RUNNING+PENDING)={snap['active']} | "
+                f"NOT_STARTED={snap['not_started']} | done={snap['done']}")
+    logger.info(f"       breakdown: {breakdown}")
+
+
+def build_status_cmd(args):
+    return [args.python, args.status_script, "--shards-jsonl", args.shards_jsonl]
+
+
+def build_submit_cmd(args, node_limit):
+    return [
+        args.python, args.submitter,
+        "--shards-jsonl", args.shards_jsonl,
+        "--node-limit", str(node_limit),
+        "--partition", args.partition,
+        "--time-limit", args.time_limit,
+        "--n-workers", str(args.n_workers),
+        "--mem", args.mem,
+        "--account", args.account,
+    ]
+
+
+def run_cmd(cmd):
+    """Run a subprocess, streaming its output. Returns True on success."""
+    logger.info(f"RUN: {' '.join(cmd)}")
+    try:
+        subprocess.run(cmd, check=True)
+        return True
+    except subprocess.CalledProcessError as e:
+        logger.error(f"command failed (rc={e.returncode}): {' '.join(cmd)}")
+        return False
+    except FileNotFoundError as e:
+        logger.error(f"command not found: {cmd[0]} ({e})")
+        return False
+
+
+def update_status(args):
+    run_cmd(build_status_cmd(args))
+
+
+def submit_n(args, n, reason):
+    """Submit up to n NOT_STARTED jobs (submitter self-caps at available NOT_STARTED)."""
+    if n <= 0:
+        logger.info(f"no room to submit ({reason})")
+        return
+    logger.info(f"submitting up to {n} jobs ({reason})")
+    run_cmd(build_submit_cmd(args, n))
+
+
+def sleep_until_next(seconds):
+    wake = time.time() + seconds
+    eest_wake = time.strftime("%H:%M:%S", time.localtime(wake))
+    cest_wake = time.strftime("%H:%M:%S", time.localtime(wake - 3600))
+
+    logger.info(f"sleeping {seconds / 60.0:.0f} min (next check -> CEST: ~{cest_wake} | EEST: ~{eest_wake})...")
+    time.sleep(seconds)
+
+
+def main():
+    args = parse_args()
+
+    # one log file per run: logs/job_orchestrator/orchestration_<workflow>_<dataset>_<timestamp>.log
+    dataset = os.path.basename(os.path.dirname(os.path.abspath(args.shards_jsonl))) or "dataset"
+    log_path = os.path.join(
+        args.log_dir,
+        f"orchestration_{args.workflow}_{dataset}_{time.strftime('%Y%m%d_%H%M%S')}.log",
+    )
+    logger.remove()
+    logger.add(sys.stderr, format=LOG_FORMAT)
+    logger.add(log_path, format=LOG_FORMAT)
+
+    if not os.path.exists(args.shards_jsonl):
+        logger.error(f"shards jsonl not found: {args.shards_jsonl}")
+        sys.exit(1)
+    if args.chunk > args.max_queue:
+        logger.warning(f"--chunk ({args.chunk}) > --max-queue ({args.max_queue}); clamping to max-queue")
+        args.chunk = args.max_queue
+    if args.chunk <= 0:
+        logger.error("--chunk must be > 0")
+        sys.exit(1)
+
+    logger.info("=== SLURM array-job orchestrator ===")
+    logger.info(f"logging to {log_path}")
+    logger.info(f"jsonl={args.shards_jsonl}  max-queue={args.max_queue}  chunk={args.chunk}  "
+                f"poll={args.poll_interval}s")
+
+    try:
+        # 1. initial status update 
+        if not args.no_initial_status:
+            logger.info("initial status update ---")
+            update_status(args)
+
+        snap = count_statuses(args.shards_jsonl, args.status_field)
+        log_snapshot(snap)
+
+        # nothing to submit and nothing running -> done
+        if snap["not_started"] == 0 and snap["active"] == 0:
+            logger.info("no NOT_STARTED or active jobs; nothing to do. done.")
+            return
+
+        # 1.b first fill: top the queue up to max-queue
+        if snap["not_started"] > 0:
+            submit_n(args, max(0, args.max_queue - snap["active"]),
+                     reason=f"first fill -> top up to {args.max_queue}")
+        else:
+            logger.info("no NOT_STARTED jobs to submit; monitoring active jobs until they finish")
+
+        # 2. loop
+        cycle = 0
+        while True:
+            cycle += 1
+            if args.max_cycles and cycle > args.max_cycles:
+                logger.info(f"reached --max-cycles={args.max_cycles}; stopping")
+                break
+
+            sleep_until_next(args.poll_interval)
+
+            logger.info(f"cycle {cycle}: status update ---")
+            update_status(args)
+            snap = count_statuses(args.shards_jsonl, args.status_field)
+            log_snapshot(snap)
+
+            # stopping condition: nothing left to submit AND nothing still active
+            if snap["not_started"] == 0 and snap["active"] == 0:
+                logger.info("all jobs finished (no NOT_STARTED, none active). done.")
+                break
+            if snap["not_started"] == 0:
+                logger.info(f"no NOT_STARTED jobs left; waiting for {snap['active']} active to drain")
+                continue
+
+            # submit a chunk only if free slots strictly exceed the chunk size.
+            # e.g. chunk=50 -> need headroom >= 51 to submit.
+            headroom = args.max_queue - snap["active"]   # free slots (max_queue - RUNNING/PENDING)
+            to_submit = args.chunk if headroom > args.chunk else 0
+            reason = (f"headroom={headroom} > chunk={args.chunk}"
+                    if to_submit else
+                    f"headroom={headroom} <= chunk={args.chunk}, waiting")
+            submit_n(args, to_submit, reason=reason)
+
+    except KeyboardInterrupt:
+        logger.warning("interrupted by user. Running SLURM jobs are unaffected; re-run to resume.")
+        sys.exit(130)
+
+    logger.info("=== orchestrator finished ===")
+
+
+if __name__ == "__main__":
+    main()
