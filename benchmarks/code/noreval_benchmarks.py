@@ -116,16 +116,17 @@ class NorIdiom(DownstreamTask):
         ]
 
     def generate_ngrams(self):
-        for idx, line in enumerate(self._dataset):
-            try:
-                text = line["idiom_start"].strip()
-                self._update_ngrams(text, self._min_ngram_size, self._max_ngram_size)
-                for completion in line["accepted_completions"]:
-                    self._update_ngrams(
-                        completion, self._min_ngram_size, self._max_ngram_size
-                    )
-            except Exception:
-                logging.exception(f"Error processing line {idx}")
+        for dataset in self._datasets:                      # plural, both configs
+            for idx, line in enumerate(dataset):
+                try:
+                    text = line["idiom_start"].strip()
+                    self._update_ngrams(text, self._min_ngram_size, self._max_ngram_size)
+                    for completion in line["accepted_completions"]:
+                        self._update_ngrams(
+                            completion, self._min_ngram_size, self._max_ngram_size
+                        )
+                except Exception:
+                    logging.exception(f"Error processing line {idx}")
         return self.ngrams
 
 
