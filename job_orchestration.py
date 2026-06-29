@@ -40,7 +40,15 @@ def parse_args():
     p.add_argument("--n-workers", type=int, default=12)
     p.add_argument("--mem", default="448G")
 
-    # script locations / behaviour 
+    # removal phase
+    p.add_argument("--removal-submitter", default="submitter_remove_matches_array.py",
+                   help="Script used to submit removal jobs.")
+    p.add_argument("--match-threshold", type=int, default=10,
+                   help="Match threshold passed to the removal submitter.")
+    p.add_argument("--skip-removal", action="store_true",
+                   help="Exit after matching completes without running the removal phase.")
+
+    # script locations / behaviour
     p.add_argument("--submitter", default="submitter_ngram_match_array.py")
     p.add_argument("--status-script", default="utils/status.py")
     p.add_argument("--python", default=sys.executable or "python3",
@@ -62,7 +70,7 @@ def parse_args():
     return p.parse_args()
 
 
-def count_statuses(path, status_field=STATUS_FIELD):
+def count_statuses(path, status_field=STATUS_FIELD, missing_as=None):
     """Tally job statuses straight from the jsonl."""
     counts = Counter()
     total = 0
@@ -76,7 +84,8 @@ def count_statuses(path, status_field=STATUS_FIELD):
             except json.JSONDecodeError:
                 logger.warning(f"skipping unparseable jsonl line {ln}")
                 continue
-            status = str(obj.get(status_field, "")).strip().upper()
+            raw = obj.get(status_field)
+            status = str(missing_as if raw is None else raw).strip().upper()
             counts[status] += 1
             total += 1
     active = sum(counts.get(s, 0) for s in ACTIVE_STATES)
@@ -107,6 +116,20 @@ def build_submit_cmd(args, node_limit):
         "--n-workers", str(args.n_workers),
         "--mem", args.mem,
         "--account", args.account,
+    ]
+
+
+def build_removal_submit_cmd(args, node_limit):
+    return [
+        args.python, args.removal_submitter,
+        "--shards-jsonl", args.shards_jsonl,
+        "--node-limit", str(node_limit),
+        "--partition", args.partition,
+        "--time-limit", args.time_limit,
+        "--n-workers", str(args.n_workers),
+        "--mem", args.mem,
+        "--account", args.account,
+        "--match-threshold", str(args.match_threshold),
     ]
 
 
@@ -226,6 +249,75 @@ def main():
                     if to_submit else
                     f"headroom={headroom} <= chunk={args.chunk}, waiting")
             submit_n(args, to_submit, reason=reason)
+
+        # ── Removal phase ────────────────────────────────────────────────────
+        if args.skip_removal:
+            logger.info("--skip-removal set; skipping removal phase.")
+        else:
+            logger.info("=== removal phase: checking prerequisites ===")
+            update_status(args)
+            with open(args.shards_jsonl) as f:
+                all_rows = [json.loads(ln) for ln in f if ln.strip()]
+            if not all(row.get("status") == "COMPLETED" for row in all_rows):
+                logger.error(
+                    "not all matching jobs have status=COMPLETED; "
+                    "removal phase skipped — re-run after matching finishes."
+                )
+            else:
+                logger.info("all matching jobs COMPLETED; starting removal phase.")
+                REMOVAL_STATUS_FIELD = "removal_status"
+
+                snap = count_statuses(args.shards_jsonl, REMOVAL_STATUS_FIELD,
+                                      missing_as=SUBMITTABLE_STATE)
+                log_snapshot(snap)
+
+                if snap["not_started"] == 0 and snap["active"] == 0:
+                    logger.info("no removal jobs to submit; done.")
+                else:
+                    if snap["not_started"] > 0:
+                        n = max(0, args.max_queue - snap["active"])
+                        if n > 0:
+                            logger.info(f"submitting up to {n} removal jobs "
+                                        f"(first fill -> top up to {args.max_queue})")
+                            run_cmd(build_removal_submit_cmd(args, n))
+                        else:
+                            logger.info("no room to submit removal jobs (first fill)")
+                    else:
+                        logger.info("no NOT_STARTED removal jobs; monitoring active until they finish")
+
+                    cycle = 0
+                    while True:
+                        cycle += 1
+                        if args.max_cycles and cycle > args.max_cycles:
+                            logger.info(f"reached --max-cycles={args.max_cycles}; stopping removal phase")
+                            break
+
+                        sleep_until_next(args.poll_interval)
+
+                        logger.info(f"removal cycle {cycle}: status update ---")
+                        update_status(args)
+                        snap = count_statuses(args.shards_jsonl, REMOVAL_STATUS_FIELD,
+                                              missing_as=SUBMITTABLE_STATE)
+                        log_snapshot(snap)
+
+                        if snap["not_started"] == 0 and snap["active"] == 0:
+                            logger.info("all removal jobs finished (no NOT_STARTED, none active). done.")
+                            break
+                        if snap["not_started"] == 0:
+                            logger.info(f"no NOT_STARTED removal jobs left; "
+                                        f"waiting for {snap['active']} active to drain")
+                            continue
+
+                        headroom = args.max_queue - snap["active"]
+                        to_submit = args.chunk if headroom > args.chunk else 0
+                        reason = (f"headroom={headroom} > chunk={args.chunk}"
+                                  if to_submit else
+                                  f"headroom={headroom} <= chunk={args.chunk}, waiting")
+                        if to_submit:
+                            logger.info(f"submitting up to {to_submit} removal jobs ({reason})")
+                            run_cmd(build_removal_submit_cmd(args, to_submit))
+                        else:
+                            logger.info(f"no room to submit removal jobs ({reason})")
 
     except KeyboardInterrupt:
         logger.warning("interrupted by user. Running SLURM jobs are unaffected; re-run to resume.")
