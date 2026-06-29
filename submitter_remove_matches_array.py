@@ -10,7 +10,6 @@ from pathlib import Path
 from loguru import logger
 import yaml
 
-from utils.utils import update_job_id_array
 
 CODE_ELEGIBILITY = ["NOT_STARTED", "FAILED", "PREEMPTED", "SUSPENDED", None, "CANCELLED+", "TIMEOUT"]
 WORK_DIRECTORY = None
@@ -109,14 +108,17 @@ def main():
     parse_jsonl = ""
     if args.parse_jsonl:
         parse_jsonl = "--parse-jsonl"
-    array_idxs = ",".join(jobs_to_submit)
+    batch_rows = [shards_dict[int(idx) - 1] for idx in jobs_to_submit]
+    batch_jsonl_path = logs_path / f"batch_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.jsonl"
+    pl.DataFrame(batch_rows).write_ndjson(batch_jsonl_path)
+    array_idxs = f"1-{len(jobs_to_submit)}"
     job_name = f"{dataset_name}_%A_%a"
     output_logs = f"{logs_path}/job_%A_%a.out"
     error_logs = f"{logs_path}/job_%A_%a.err"
     slurm_script_path = "utils/template_match_removal.slurm"
-    
-    
-    cmd = ["sbatch", "--array", f"{array_idxs}", 
+
+
+    cmd = ["sbatch", "--array", f"{array_idxs}",
             "--job-name", job_name,
             "--account", args.account,
             "--partition", args.partition,
@@ -126,7 +128,7 @@ def main():
             "--output", output_logs,
             "--error", error_logs,
             slurm_script_path,
-            args.shards_jsonl,
+            batch_jsonl_path,
             output_dir,
             str(args.n_workers),
             matched_ngrams_dir,
@@ -150,12 +152,13 @@ def main():
 
     sbatch_job_id = result.stdout.strip().split()[-1]
 
-    for idx in jobs_to_submit:
-        job_id = f"{sbatch_job_id}_{idx}"
-        update_job_id_array(which_job_id = "removal_job_id",
-                                which_status = "removal_status",
-                                job_id = job_id,
-                                shards_jsonl = args.shards_jsonl)
+    shards_dict_main = pl.read_ndjson(args.shards_jsonl).to_dicts()
+    for seq_idx, actual_idx_str in enumerate(jobs_to_submit, start=1):
+        job_id = f"{sbatch_job_id}_{seq_idx}"
+        row = shards_dict_main[int(actual_idx_str) - 1]
+        row["removal_job_id"] = job_id
+        row["removal_status"] = "PENDING"
+    pl.DataFrame(shards_dict_main).write_ndjson(args.shards_jsonl)
 
     logger.info(f"- Submitted...")
 
