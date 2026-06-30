@@ -45,11 +45,12 @@ tasks:
   - name: benchmarks.code.multilingual_benchmarks.GlobalMMLU_Full
     params: {lang: fr, split_type: test}
 
-  - name: benchmarks.code.multilingual_benchmarks.ComparIA_FR
-    params: {}
+  # - name: benchmarks.code.multilingual_benchmarks.ComparIA_FR
+  #   params: {}
 
   - name: benchmarks.code.multilingual_benchmarks.OneRuler
     params: {lang: fr}
+
   - name: benchmarks.code.multilingual_benchmarks.ArcChallengeMt
     params: {lang: fr, split_type: test}
 

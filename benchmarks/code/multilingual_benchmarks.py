@@ -623,24 +623,23 @@ class ComparIA_FR(DownstreamTask):
         )
 
     def generate_ngrams(self):
+        def add(text):
+            if isinstance(text, str):
+                text = text.strip()
+                if text:
+                    self._update_ngrams(
+                        text, self._min_ngram_size, self._max_ngram_size
+                    )
+
         for idx, line in enumerate(self._dataset):
             try:
-                text = line["opening_msg"]
-                self._update_ngrams(text, self._min_ngram_size, self._max_ngram_size)
-                text = line["system_prompt_a"]
-                self._update_ngrams(text, self._min_ngram_size, self._max_ngram_size)
-                text = line["system_prompt_b"]
-                self._update_ngrams(text, self._min_ngram_size, self._max_ngram_size)
-                text = line["conversation_a"]
-                for item in text.items():
-                    self._update_ngrams(
-                        item["content"], self._min_ngram_size, self._max_ngram_size
-                    )
-                text = line["conversation_b"]
-                for item in text.items():
-                    self._update_ngrams(
-                        item["content"], self._min_ngram_size, self._max_ngram_size
-                    )
+                add(line.get("opening_msg"))
+                add(line.get("system_prompt_a"))
+                add(line.get("system_prompt_b"))
+                for turn in (line.get("conversation_a") or []):
+                    add(turn.get("content"))
+                for turn in (line.get("conversation_b") or []):
+                    add(turn.get("content"))
             except Exception:
                 logging.exception(f"Error processing line {idx}")
         return self.ngrams
