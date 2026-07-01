@@ -241,13 +241,12 @@ def main():
                 logger.info(f"no NOT_STARTED jobs left; waiting for {snap['active']} active to drain")
                 continue
 
-            # submit a chunk only if free slots strictly exceed the chunk size.
-            # e.g. chunk=50 -> need headroom >= 51 to submit.
-            headroom = args.max_queue - snap["active"]   # free slots (max_queue - RUNNING/PENDING)
-            to_submit = args.chunk if headroom > args.chunk else 0
-            reason = (f"headroom={headroom} > chunk={args.chunk}"
+            headroom = args.max_queue - snap["active"]
+            submittable = min(args.chunk, snap["not_started"])
+            to_submit = submittable if headroom >= submittable else 0
+            reason = (f"headroom={headroom} >= submittable={submittable}"
                     if to_submit else
-                    f"headroom={headroom} <= chunk={args.chunk}, waiting")
+                    f"headroom={headroom} < submittable={submittable}, waiting")
             submit_n(args, to_submit, reason=reason)
 
         # ── Removal phase ────────────────────────────────────────────────────
@@ -309,10 +308,11 @@ def main():
                             continue
 
                         headroom = args.max_queue - snap["active"]
-                        to_submit = args.chunk if headroom > args.chunk else 0
-                        reason = (f"headroom={headroom} > chunk={args.chunk}"
+                        submittable = min(args.chunk, snap["not_started"])
+                        to_submit = submittable if headroom >= submittable else 0
+                        reason = (f"headroom={headroom} >= submittable={submittable}"
                                   if to_submit else
-                                  f"headroom={headroom} <= chunk={args.chunk}, waiting")
+                                  f"headroom={headroom} < submittable={submittable}, waiting")
                         if to_submit:
                             logger.info(f"submitting up to {to_submit} removal jobs ({reason})")
                             run_cmd(build_removal_submit_cmd(args, to_submit))
