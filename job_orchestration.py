@@ -1,5 +1,7 @@
 import argparse
 import json
+import yaml
+from pathlib import Path
 import os
 import subprocess
 import sys
@@ -17,6 +19,9 @@ SUBMITTABLE_STATE = "NOT_STARTED"
 
 LOG_FORMAT = "{time:YYYY-MM-DD HH:mm:ss} | {level: <7} | {message}"
 
+with open('env_variables.yaml', 'r') as file:
+    variables = yaml.safe_load(file)
+    DECONTAMINATION_DIR = variables["DECONTAMINATION_DIR"]
 
 def parse_args():
     p = argparse.ArgumentParser(
@@ -160,6 +165,12 @@ def submit_n(args, n, reason):
     run_cmd(build_submit_cmd(args, n))
 
 
+def check_ngram_pkl(path):
+    if not path.exists():
+        logger.warning(f"required file not found, cannot submit removal jobs: {path}")
+        sys.exit(1)
+
+
 def sleep_until_next(seconds):
     wake = time.time() + seconds
     eest_wake = time.strftime("%H:%M:%S", time.localtime(wake))
@@ -266,6 +277,11 @@ def main():
                 logger.info("all matching jobs COMPLETED; starting removal phase.")
                 REMOVAL_STATUS_FIELD = "removal_status"
 
+                dataset_name = all_rows[0]["dataset_name"]
+                language = Path(args.shards_jsonl).stem[len(dataset_name) + 1:]
+                ngram_pkl = Path(DECONTAMINATION_DIR) / dataset_name / language / "matched_ngrams" / "all_matched_ngrams.pkl"
+                logger.info(f"expecting ngram pkl at: {ngram_pkl}")
+
                 snap = count_statuses(args.shards_jsonl, REMOVAL_STATUS_FIELD,
                                       missing_as=SUBMITTABLE_STATE)
                 log_snapshot(snap)
@@ -276,6 +292,7 @@ def main():
                     if snap["not_started"] > 0:
                         n = max(0, args.max_queue - snap["active"])
                         if n > 0:
+                            check_ngram_pkl(ngram_pkl)
                             logger.info(f"submitting up to {n} removal jobs "
                                         f"(first fill -> top up to {args.max_queue})")
                             run_cmd(build_removal_submit_cmd(args, n))
@@ -314,6 +331,7 @@ def main():
                                   if to_submit else
                                   f"headroom={headroom} < submittable={submittable}, waiting")
                         if to_submit:
+                            check_ngram_pkl(ngram_pkl)
                             logger.info(f"submitting up to {to_submit} removal jobs ({reason})")
                             run_cmd(build_removal_submit_cmd(args, to_submit))
                         else:
