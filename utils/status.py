@@ -110,7 +110,7 @@ def update_all_job_status(shards_jsonl: Path):
                 job_status = get_job_status(shards_id)
 
                 if job_status == "SAME_STATUS":
-                    job_status = shard_group["status"]
+                    job_status = shard_group["removal_status"]
 
                 if shards_status != job_status:
                     logger.info(f"      <Removal> job status changed from <{shards_status}> to <{job_status}>")
