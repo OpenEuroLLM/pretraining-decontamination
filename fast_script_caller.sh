@@ -2,7 +2,8 @@
 
 
 # Change dataset name and uncomment only languages supported by dataset
-DATASET="nemotron-cc-1.0"
+DECONT_FOLDER="/scratch/project_465002530/users/gramirez/decontamination"
+DATASET="dclm-1.0"
 LANGS=(
   # "bul_Cyrl"
   # "cat_Latn"
@@ -65,6 +66,7 @@ for LANG in "${LANGS[@]}"; do
     ### Uncomment this line to run the final combination step after ALL removal jobs have completed
     # python3 combine_jsonl_files.py --dataset ${DATASET} --lang ${LANG} --compress --compression-level 9
 
+  rsync -avP "${DECONT_FOLDER}/${DATASET}/${LANG}/final_removed_data/${LANG}/" "/scratch/project_465002530/training/collection/flag/${DATASET}/contamination/${LANG}/"
 
     ### Uncomment this line to run the n-gram matching step for each language
     ### NOT RECOMMENDED: unless you already know what you're doing and dataset has few shards per language

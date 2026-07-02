@@ -100,11 +100,11 @@ def count_statuses(path, status_field=STATUS_FIELD, missing_as=None):
             "active": active, "not_started": not_started, "done": done}
 
 
-def log_snapshot(snap):
+def log_snapshot(snap, phase="matching"):
     breakdown = ", ".join(f"{k}={v}" for k, v in sorted(snap["counts"].items())) or "(empty)"
-    logger.info(f"jsonl: total={snap['total']} | active(RUNNING+PENDING)={snap['active']} | "
+    logger.info(f"[{phase}] jsonl: total={snap['total']} | active(RUNNING+PENDING)={snap['active']} | "
                 f"NOT_STARTED={snap['not_started']} | done={snap['done']}")
-    logger.info(f"       breakdown: {breakdown}")
+    logger.info(f"[{phase}]        breakdown: {breakdown}")
 
 
 def build_status_cmd(args):
@@ -215,50 +215,48 @@ def main():
             update_status(args)
 
         snap = count_statuses(args.shards_jsonl, args.status_field)
-        log_snapshot(snap)
+        log_snapshot(snap, phase="matching")
 
-        # nothing to submit and nothing running -> done
         if snap["not_started"] == 0 and snap["active"] == 0:
-            logger.info("no NOT_STARTED or active jobs; nothing to do. done.")
-            return
-
-        # 1.b first fill: top the queue up to max-queue
-        if snap["not_started"] > 0:
-            submit_n(args, max(0, args.max_queue - snap["active"]),
-                     reason=f"first fill -> top up to {args.max_queue}")
+            logger.info("no NOT_STARTED or active matching jobs; skipping matching phase.")
         else:
-            logger.info("no NOT_STARTED jobs to submit; monitoring active jobs until they finish")
+            # 1.b first fill: top the queue up to max-queue
+            if snap["not_started"] > 0:
+                submit_n(args, max(0, args.max_queue - snap["active"]),
+                         reason=f"first fill -> top up to {args.max_queue}")
+            else:
+                logger.info("no NOT_STARTED jobs to submit; monitoring active jobs until they finish")
 
-        # 2. loop
-        cycle = 0
-        while True:
-            cycle += 1
-            if args.max_cycles and cycle > args.max_cycles:
-                logger.info(f"reached --max-cycles={args.max_cycles}; stopping")
-                break
+            # 2. loop
+            cycle = 0
+            while True:
+                cycle += 1
+                if args.max_cycles and cycle > args.max_cycles:
+                    logger.info(f"reached --max-cycles={args.max_cycles}; stopping")
+                    break
 
-            sleep_until_next(args.poll_interval)
+                sleep_until_next(args.poll_interval)
 
-            logger.info(f"cycle {cycle}: status update ---")
-            update_status(args)
-            snap = count_statuses(args.shards_jsonl, args.status_field)
-            log_snapshot(snap)
+                logger.info(f"cycle {cycle}: status update ---")
+                update_status(args)
+                snap = count_statuses(args.shards_jsonl, args.status_field)
+                log_snapshot(snap, phase="matching")
 
-            # stopping condition: nothing left to submit AND nothing still active
-            if snap["not_started"] == 0 and snap["active"] == 0:
-                logger.info("all jobs finished (no NOT_STARTED, none active). done.")
-                break
-            if snap["not_started"] == 0:
-                logger.info(f"no NOT_STARTED jobs left; waiting for {snap['active']} active to drain")
-                continue
+                # stopping condition: nothing left to submit AND nothing still active
+                if snap["not_started"] == 0 and snap["active"] == 0:
+                    logger.info("all jobs finished (no NOT_STARTED, none active). done.")
+                    break
+                if snap["not_started"] == 0:
+                    logger.info(f"no NOT_STARTED jobs left; waiting for {snap['active']} active to drain")
+                    continue
 
-            headroom = args.max_queue - snap["active"]
-            submittable = min(args.chunk, snap["not_started"])
-            to_submit = submittable if headroom >= submittable else 0
-            reason = (f"headroom={headroom} >= submittable={submittable}"
-                    if to_submit else
-                    f"headroom={headroom} < submittable={submittable}, waiting")
-            submit_n(args, to_submit, reason=reason)
+                headroom = args.max_queue - snap["active"]
+                submittable = min(args.chunk, snap["not_started"])
+                to_submit = submittable if headroom >= submittable else 0
+                reason = (f"headroom={headroom} >= submittable={submittable}"
+                        if to_submit else
+                        f"headroom={headroom} < submittable={submittable}, waiting")
+                submit_n(args, to_submit, reason=reason)
 
         # ── Removal phase ────────────────────────────────────────────────────
         if args.skip_removal:
@@ -284,7 +282,7 @@ def main():
 
                 snap = count_statuses(args.shards_jsonl, REMOVAL_STATUS_FIELD,
                                       missing_as=SUBMITTABLE_STATE)
-                log_snapshot(snap)
+                log_snapshot(snap, phase="removal")
 
                 if snap["not_started"] == 0 and snap["active"] == 0:
                     logger.info("no removal jobs to submit; done.")
@@ -314,7 +312,7 @@ def main():
                         update_status(args)
                         snap = count_statuses(args.shards_jsonl, REMOVAL_STATUS_FIELD,
                                               missing_as=SUBMITTABLE_STATE)
-                        log_snapshot(snap)
+                        log_snapshot(snap, phase="removal")
 
                         if snap["not_started"] == 0 and snap["active"] == 0:
                             logger.info("all removal jobs finished (no NOT_STARTED, none active). done.")
