@@ -44,21 +44,25 @@ def _get_nested(obj, field_path: str):
     return val
 
 
-def _filter_jsonl_stream(f_in, f_out, id_field: str = "id", text_field: str = "text"):
+def _filter_jsonl_stream(f_in, f_out, id_field: str = "id", text_field: str = "text") -> int:
     """
     Streams JSONL line by line, strips each record to just {id_field, text_field},
     and writes the result to f_out. Eliminates pandas type inference crashes caused
     by other fields (e.g. dates) having inconsistent types across records.
     Supports dotted-path field names (e.g. 'metadata.WARC-Record-ID').
     Malformed JSON lines are logged and skipped.
+    Returns the number of records written.
     """
+    written = 0
     for line_num, line in enumerate(f_in, 1):
         try:
             obj = json.loads(line)
             record = {id_field: _get_nested(obj, id_field), text_field: _get_nested(obj, text_field)}
             f_out.write(json.dumps(record, ensure_ascii=False) + "\n")
+            written += 1
         except json.JSONDecodeError:
             logger.exception(f"Invalid JSON at line {line_num}")
+    return written
 
 
 def decompress_files(file_paths, decompressed_dir, parse_jsonl=False, metadata_path=None):
@@ -112,7 +116,7 @@ def decompress_files(file_paths, decompressed_dir, parse_jsonl=False, metadata_p
                 decompressed_path = decompressed_dir / path.with_suffix("").name
                 with gzip.open(path, "rt", encoding="utf-8") as f_in, \
                     open(decompressed_path, "w", encoding="utf-8") as f_out:
-                    _filter_jsonl_stream(f_in, f_out, id_field=id_field, text_field=text_field)
+                    written = _filter_jsonl_stream(f_in, f_out, id_field=id_field, text_field=text_field)
 
             # --- ZSTD ---
             elif path.suffix in (".zst", ".zstd"):
@@ -125,14 +129,22 @@ def decompress_files(file_paths, decompressed_dir, parse_jsonl=False, metadata_p
                     open(decompressed_path, "w", encoding="utf-8") as f_out:
 
                     text_stream = io.TextIOWrapper(reader, encoding="utf-8")
-                    _filter_jsonl_stream(text_stream, f_out, id_field=id_field, text_field=text_field)
+                    written = _filter_jsonl_stream(text_stream, f_out, id_field=id_field, text_field=text_field)
 
             # --- Uncompressed ---
             else:
                 decompressed_path = decompressed_dir / path.name
                 with path.open("r", encoding="utf-8") as f_in, \
                     open(decompressed_path, "w", encoding="utf-8") as f_out:
-                    _filter_jsonl_stream(f_in, f_out, id_field=id_field, text_field=text_field)
+                    written = _filter_jsonl_stream(f_in, f_out, id_field=id_field, text_field=text_field)
+
+            if written == 0:
+                # An empty (zero-record) file has no columns once parsed by pandas.
+                # If dask picks it to infer the dataframe's meta, every other partition's
+                # id/text columns will look like a "Metadata mismatch" against it, so drop it here.
+                logger.warning(f"{path} produced 0 valid records after filtering, skipping it: {decompressed_path}")
+                decompressed_path.unlink()
+                continue
 
             decompressed_files.append(decompressed_path)
     logger.info(f"Finished decompressed {len(decompressed_files)} files.")
