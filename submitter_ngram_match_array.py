@@ -35,6 +35,7 @@ def main():
                         action=argparse.BooleanOptionalAction,
                         default=True,
                         help="Flag used when jsonl fields differ in metadata type and pandas crashes.")
+    parser.add_argument("--parallel-dataset-config", default=None, type=Path, help="Path to the parallel dataset configuration file. Used only for parallel corpora.")
     args = parser.parse_args()
     
     x = datetime.datetime.now()
@@ -79,6 +80,7 @@ def main():
     logger.info(f"- Time limit: {args.time_limit}")
     logger.info(f"- Number workers: {args.n_workers}")
     logger.info(f"- Memory: {args.memory}")
+    logger.info(f"- Parallel dataset config: {args.parallel_dataset_config}")
     logger.info(f"_____________")
     logger.info(f"Finding jobs to run...")
 
@@ -123,7 +125,8 @@ def main():
             TMP_DIR,
             DATASETS_DIR,
             metadata_path,
-            ]
+            args.parallel_dataset_config
+        ]
 
     try:
             

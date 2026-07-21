@@ -32,7 +32,8 @@ from nemo_curator.utils.script_utils import ArgumentHelper
 from utils_nemo import (
     get_all_files_from_text,
     decompress_files,
-    delete_decompressed_files
+    delete_decompressed_files,
+    resolve_text_field,
 )
 
 def batch_list(lst, batch_size=50):
@@ -44,6 +45,8 @@ logging.getLogger("PIL").setLevel(logging.WARNING)
 
 def main(args: argparse.Namespace) -> None:
     client = get_client(**ArgumentHelper.parse_client_args(args))  # noqa: F841
+    args.input_text_field = resolve_text_field(args.metadata_path, args.parallel_dataset_config)
+
     output_rm_doc_dir = None
     if args.output_removed_doc_dir is not None:
         output_rm_doc_dir = expand_outdir_and_mkdir(args.output_removed_doc_dir)
@@ -79,7 +82,13 @@ def main(args: argparse.Namespace) -> None:
     TMP_DIR = f"/tmp_nemo/removing/{args.input_data_file.split('/')[-1][:-4]}_{random.randint(0,500)}"
     OUTPUT_DIR = f"/tmp_nemo/cleaned/{args.input_data_file.split('/')[-1][:-4]}_{random.randint(0,500)}"
     Path(TMP_DIR).mkdir(parents=True, exist_ok=True)
-    decompressed_files = decompress_files(files, decompressed_dir=TMP_DIR, parse_jsonl=args.parse_jsonl, metadata_path=args.metadata_path)
+    decompressed_files = decompress_files(
+        files,
+        decompressed_dir=TMP_DIR,
+        parse_jsonl=args.parse_jsonl,
+        metadata_path=args.metadata_path,
+        parallel_dataset_config=args.parallel_dataset_config,
+    )
     for batch in batch_list(decompressed_files):
         dataset = DocumentDataset(
             read_data(
@@ -163,6 +172,10 @@ def attach_args(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
                         type=str,
                         default=None,
                         help="Path to the dataset metadata.yaml inside the container. Used to read id and text field names.")
+    parser.add_argument("--parallel-dataset-config",
+                        type=str,
+                        default=None,
+                        help="Path to the parallel dataset configuration file (2_datasets/*.yaml). Used only for parallel corpora.")
 
     # parser.add_argument(
     #     "--output-task-deduped-dir",

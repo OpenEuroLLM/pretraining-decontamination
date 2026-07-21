@@ -6,6 +6,7 @@ import os
 import io
 import json
 import glob
+import hashlib
 from collections import Counter, defaultdict
 import pickle
 from loguru import logger
@@ -44,20 +45,83 @@ def _get_nested(obj, field_path: str):
     return val
 
 
-def _filter_jsonl_stream(f_in, f_out, id_field: str = "id", text_field: str = "text") -> int:
+def _read_parallel_dataset_side(parallel_dataset_config_path) -> str | None:
+    """Reads a 2_datasets/*.yaml dataset config and returns its 'parallel' side ('source' or 'target'), or None."""
+    if not parallel_dataset_config_path:
+        return None
+    path = Path(parallel_dataset_config_path)
+    if not path.exists():
+        logger.warning(f"parallel dataset config not found at {parallel_dataset_config_path}")
+        return None
+    with open(path) as f:
+        data = yaml.safe_load(f) or {}
+    for dataset_info in data.values():
+        if "parallel" in dataset_info:
+            return dataset_info["parallel"]
+    return None
+
+
+def resolve_dataset_fields(metadata_path, parallel_dataset_config=None):
+    """
+    Resolves the id/text field names to use for a dataset from its metadata.yaml,
+    accounting for parallel datasets via parallel_dataset_config (which declares
+    the "source"/"target" side being processed).
+    Returns (id_field, text_field, source_text_field, target_text_field).
+    id_field is None when the metadata has no "id" field for a parallel dataset -
+    callers must then compute the id from source_text_field/target_text_field.
+    """
+    meta = _read_dataset_metadata(metadata_path)
+    parallel_side = _read_parallel_dataset_side(parallel_dataset_config)
+
+    if parallel_side and "parallel" in meta:
+        source_text_field = meta["parallel"]["source"]["text"]
+        target_text_field = meta["parallel"]["target"]["text"]
+        text_field = meta["parallel"][parallel_side]["text"]
+        id_field = meta.get("id")
+        return id_field, text_field, source_text_field, target_text_field
+
+    id_field = meta.get("id", "id")
+    text_field = meta.get("text", "text")
+    return id_field, text_field, None, None
+
+
+def resolve_text_field(metadata_path, parallel_dataset_config=None) -> str:
+    """Returns just the text field name to use, e.g. for TaskDecontamination's text_field."""
+    _, text_field, _, _ = resolve_dataset_fields(metadata_path, parallel_dataset_config)
+    return text_field
+
+
+def _filter_jsonl_stream(
+    f_in,
+    f_out,
+    id_field: str | None = "id",
+    text_field: str = "text",
+    source_text_field: str | None = None,
+    target_text_field: str | None = None,
+) -> int:
     """
     Streams JSONL line by line, strips each record to just {id_field, text_field},
     and writes the result to f_out. Eliminates pandas type inference crashes caused
     by other fields (e.g. dates) having inconsistent types across records.
     Supports dotted-path field names (e.g. 'metadata.WARC-Record-ID').
     Malformed JSON lines are logged and skipped.
+
+    If id_field is None (parallel dataset metadata has no "id" field), the id is
+    computed from the source/target text fields instead.
     Returns the number of records written.
     """
     written = 0
     for line_num, line in enumerate(f_in, 1):
         try:
             obj = json.loads(line)
-            record = {id_field: _get_nested(obj, id_field), text_field: _get_nested(obj, text_field)}
+            text_value = _get_nested(obj, text_field)
+            if id_field is None:
+                src_text = _get_nested(obj, source_text_field)
+                tgt_text = _get_nested(obj, target_text_field)
+                id_value = hashlib.sha256(f"{src_text}{tgt_text}".encode("utf-8")).hexdigest()
+                record = {"id": id_value, text_field: text_value}
+            else:
+                record = {id_field: _get_nested(obj, id_field), text_field: text_value}
             f_out.write(json.dumps(record, ensure_ascii=False) + "\n")
             written += 1
         except json.JSONDecodeError:
@@ -65,7 +129,7 @@ def _filter_jsonl_stream(f_in, f_out, id_field: str = "id", text_field: str = "t
     return written
 
 
-def decompress_files(file_paths, decompressed_dir, parse_jsonl=False, metadata_path=None):
+def decompress_files(file_paths, decompressed_dir, parse_jsonl=False, metadata_path=None, parallel_dataset_config=None):
     decompressed_files = []
     decompressed_dir = Path(decompressed_dir)
     decompressed_dir.mkdir(parents=True, exist_ok=True)
@@ -104,9 +168,9 @@ def decompress_files(file_paths, decompressed_dir, parse_jsonl=False, metadata_p
             else:
                 decompressed_files.append(path)
     else:
-        meta = _read_dataset_metadata(metadata_path)
-        id_field = meta.get("id", "id")
-        text_field = meta.get("text", "text")
+        id_field, text_field, source_text_field, target_text_field = resolve_dataset_fields(
+            metadata_path, parallel_dataset_config
+        )
 
         for path in file_paths:
             path = Path(path)
@@ -116,7 +180,10 @@ def decompress_files(file_paths, decompressed_dir, parse_jsonl=False, metadata_p
                 decompressed_path = decompressed_dir / path.with_suffix("").name
                 with gzip.open(path, "rt", encoding="utf-8") as f_in, \
                     open(decompressed_path, "w", encoding="utf-8") as f_out:
-                    written = _filter_jsonl_stream(f_in, f_out, id_field=id_field, text_field=text_field)
+                    written = _filter_jsonl_stream(
+                        f_in, f_out, id_field=id_field, text_field=text_field,
+                        source_text_field=source_text_field, target_text_field=target_text_field,
+                    )
 
             # --- ZSTD ---
             elif path.suffix in (".zst", ".zstd"):
@@ -129,14 +196,20 @@ def decompress_files(file_paths, decompressed_dir, parse_jsonl=False, metadata_p
                     open(decompressed_path, "w", encoding="utf-8") as f_out:
 
                     text_stream = io.TextIOWrapper(reader, encoding="utf-8")
-                    written = _filter_jsonl_stream(text_stream, f_out, id_field=id_field, text_field=text_field)
+                    written = _filter_jsonl_stream(
+                        text_stream, f_out, id_field=id_field, text_field=text_field,
+                        source_text_field=source_text_field, target_text_field=target_text_field,
+                    )
 
             # --- Uncompressed ---
             else:
                 decompressed_path = decompressed_dir / path.name
                 with path.open("r", encoding="utf-8") as f_in, \
                     open(decompressed_path, "w", encoding="utf-8") as f_out:
-                    written = _filter_jsonl_stream(f_in, f_out, id_field=id_field, text_field=text_field)
+                    written = _filter_jsonl_stream(
+                        f_in, f_out, id_field=id_field, text_field=text_field,
+                        source_text_field=source_text_field, target_text_field=target_text_field,
+                    )
 
             if written == 0:
                 # An empty (zero-record) file has no columns once parsed by pandas.

@@ -77,13 +77,26 @@ def main():
     for key, value in splits.items():
         directories = []
         for directory in value["directories"]:
-            if "{lang}" in directory:
-                directories.extend(
-                    directory.replace("{lang}", lang) for lang in POSSIBLE_LANGS
-                )
+            if "parallel" in value.keys():
+                if "{src_lang}" in directory and "{trg_lang}" in directory:
+                    directories.extend(
+                        directory.replace("{src_lang}", src_lang).replace(
+                            "{trg_lang}", trg_lang
+                        )
+                        for src_lang in POSSIBLE_LANGS
+                        for trg_lang in POSSIBLE_LANGS
+                        if src_lang != trg_lang
+                    )
+                else:
+                    directories.append(directory)
             else:
-                directories.append(directory)
-        splits[key]["directories"] = directories
+                if "{lang}" in directory:
+                    directories.extend(
+                        directory.replace("{lang}", lang) for lang in POSSIBLE_LANGS
+                    )
+                else:
+                    directories.append(directory)
+            splits[key]["directories"] = directories
 
     for dataset_name, dataset_info in splits.items():
         chunk_size = dataset_info["chunk_size"]

@@ -13,6 +13,7 @@ PARSE_JSONL=$6
 TMP_DIR=$7
 DATASETS_DIR=$8
 METADATA_PATH=$9
+PARALLEL_DATASET_CONFIG=${10}
 
 LINENUMBER=$SLURM_ARRAY_TASK_ID
 
@@ -42,4 +43,5 @@ srun /usr/bin/time -v singularity exec \
     --max-document-splits 1 \
     --match-threshold $MATCH_THRESHOLD \
     --metadata-path "$METADATA_PATH" \
+    --parallel-dataset-config "$PARALLEL_DATASET_CONFIG" \
     $PARSE_JSONL

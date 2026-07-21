@@ -11,6 +11,7 @@ PARSE_JSONL=$4
 TMP_DIR=$5
 DATASETS_DIR=$6
 METADATA_PATH=$7
+PARALLEL_DATASET_CONFIG=$8
 
 LINENUMBER=$SLURM_ARRAY_TASK_ID
 
@@ -35,4 +36,5 @@ srun /usr/bin/time -v singularity exec \
     --output-matched-ngram-dir /matched_ngrams_dir  \
     --n-workers $NUMWORKERS \
     --metadata-path "$METADATA_PATH" \
+    --parallel-dataset-config "$PARALLEL_DATASET_CONFIG" \
     $PARSE_JSONL

@@ -7,7 +7,7 @@ from nemo_curator.utils.distributed_utils import get_client, read_data
 from nemo_curator.utils.file_utils import get_all_files_paths_under
 from nemo_curator.utils.script_utils import ArgumentHelper
 import logging
-from utils_nemo import get_all_files_from_text, decompress_files, delete_decompressed_files
+from utils_nemo import get_all_files_from_text, decompress_files, delete_decompressed_files, resolve_text_field
 from pathlib import Path
 logging.basicConfig(level=logging.DEBUG)
 logging.getLogger("PIL").setLevel(logging.WARNING)
@@ -16,6 +16,8 @@ def main(args: argparse.Namespace) -> None:
 
     client = get_client(**ArgumentHelper.parse_client_args(args))  # noqa: F841
     logging.info(client)
+
+    args.input_text_field = resolve_text_field(args.metadata_path, args.parallel_dataset_config)
 
     with open(args.input_task_ngrams, "rb") as fp:
         task_ngrams = pickle.load(fp)  # noqa: S301
@@ -29,7 +31,11 @@ def main(args: argparse.Namespace) -> None:
     
     files = get_all_files_from_text(args.input_data_file)
     # Decompress them
-    decompressed_files = decompress_files(files, decompressed_dir=TMP_DIR, parse_jsonl=args.parse_jsonl, metadata_path=args.metadata_path)
+    decompressed_files = decompress_files(files, 
+                                          decompressed_dir=TMP_DIR,
+                                          parse_jsonl=args.parse_jsonl,
+                                          metadata_path=args.metadata_path,
+                                          parallel_dataset_config=args.parallel_dataset_config)
     logging.info("Reading datasets")
     dataset = DocumentDataset(
         read_data(
@@ -116,6 +122,10 @@ def attach_args() -> argparse.ArgumentParser:
                         type=str,
                         default=None,
                         help="Path to the dataset metadata.yaml inside the container. Used to read id and text field names.")
+    parser.add_argument("--parallel-dataset-config",
+                        type=str,
+                        default=None,
+                        help="Path to the parallel dataset configuration file (2_datasets/*.yaml). Used only for parallel corpora.")
 
     # parser.add_argument(
     #     "--memory_limit",
